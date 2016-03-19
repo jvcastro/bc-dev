@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+		<graph caption="Graph for Danny Smith" xAxisName="" yAxisName=""  shownames="0" decimalPrecision="0" formatNumberScale="0"><set name="AnsweringMachine" value="143" color="ef78d" /><set name="DoNotCall" value="38" color="ce3f3" /><set name="NotAvailable" value="35" color="ebade8" /><set name="NotInterested" value="13" color="c0f52d" /><set name="No Answer" value="6" color="201d4a" /></graph>

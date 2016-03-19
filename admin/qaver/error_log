@@ -1,0 +1,22 @@
+[08-Mar-2016 19:26:01 America/Denver] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 8
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Warning:  include(): Failed opening 'Mail/mime.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear:/var/www/html/BlueCloud-Dev') in /home1/chasters/public_html/bcdev-francis/classes/mailer.php on line 5
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Warning:  include_once(../phpmailer/PHPMailerAutoload.php): failed to open stream: No such file or directory in /home1/chasters/public_html/bcdev-francis/classes/mailer.php on line 6
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Warning:  include_once(): Failed opening '../phpmailer/PHPMailerAutoload.php' for inclusion (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear:/var/www/html/BlueCloud-Dev') in /home1/chasters/public_html/bcdev-francis/classes/mailer.php on line 6
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: projectid in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 28
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qaver.php on line 59
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: projectid in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 69
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index:  in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 69
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: projectid in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 69
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index:  in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 69
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: projectid in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 71
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: selected in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 149
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined variable: disp in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 149
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: selected in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 149
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: start in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 79
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: disposition in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 83
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: selected in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 149
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined variable: disp in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 149
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: end in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 85
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: agentid in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 94
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined index: datetype in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 112
+[09-Mar-2016 10:26:01 Asia/Manila] PHP Notice:  Undefined variable: dcont in /home1/chasters/public_html/bcdev-francis/admin-dev/qaver/qa.php on line 147

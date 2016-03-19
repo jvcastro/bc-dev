@@ -1,0 +1,590 @@
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined variable: act in /home1/chasters/public_html/bcdev-francis/admin-dev/adminsubsystem.php on line 16
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined variable: act in /home1/chasters/public_html/bcdev-francis/admin-dev/adminsubsystem.php on line 17
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 11
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined index: support in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 10
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined index: adminext in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 13
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined property via __get(): voip in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 1298 in /home1/chasters/public_html/bcdev-francis/classes/classes.php on line 96
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined variable: min in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 2130
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined index: impersonator in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 55
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Notice:  Undefined index: adminext in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 65
+[09-Mar-2016 09:41:08 Asia/Manila] PHP Fatal error:  Cannot redeclare phplog_on() (previously declared in /home1/chasters/public_html/bcdev-francis/dbconnect-dev.php:15) in /home1/chasters/public_html/bcdev-francis/dbconnect-dev.php on line 16
+[09-Mar-2016 10:26:07 Asia/Manila] PHP Notice:  Undefined index: manageclients in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 262
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 65 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 66 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 67 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 72 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 73 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 77 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 81 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 82 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 87 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 88 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 90 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 112 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 161 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 162 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 163 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 164 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 165 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 166 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 167 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 181 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 182 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 224 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 248 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 251 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 263 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 299 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 301 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 321 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 338 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 342 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 356 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 364 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 380 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 407 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:08 Asia/Manila] PHP Notice:  Undefined offset: 447 in /home1/chasters/public_html/bcdev-francis/admin-dev/manageclient.php on line 47
+[09-Mar-2016 10:26:10 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined variable: act in /home1/chasters/public_html/bcdev-francis/admin-dev/adminsubsystem.php on line 16
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined variable: act in /home1/chasters/public_html/bcdev-francis/admin-dev/adminsubsystem.php on line 17
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 11
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined index: support in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 10
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined index: adminext in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 13
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined property via __get(): voip in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 1298 in /home1/chasters/public_html/bcdev-francis/classes/classes.php on line 96
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined variable: min in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 2130
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined index: impersonator in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 55
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Notice:  Undefined index: adminext in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 65
+[09-Mar-2016 12:32:28 Asia/Manila] PHP Fatal error:  Cannot redeclare phplog_on() (previously declared in /home1/chasters/public_html/bcdev-francis/dbconnect-dev.php:15) in /home1/chasters/public_html/bcdev-francis/dbconnect-dev.php on line 16
+[09-Mar-2016 12:33:14 Asia/Manila] PHP Notice:  Undefined index: managecampaigns in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 262
+[09-Mar-2016 12:33:14 Asia/Manila] PHP Notice:  Undefined variable: prolist in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 500
+[09-Mar-2016 12:33:14 Asia/Manila] PHP Notice:  Undefined offset: 169 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 528
+[09-Mar-2016 12:33:14 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined variable: providerlist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1633
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined variable: dislist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1688
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1688
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined index: NotInterested in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined offset: 2210 in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1688
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined index: Information Requested in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined index: Appointment Set in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined index: No Answer in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined variable: dpdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1767
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined variable: dmdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1775
+[09-Mar-2016 12:33:17 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Notice:  Undefined variable: keys in /home1/chasters/public_html/bcdev-francis/admin-dev/queuepreview/admin-managecamp-include.php on line 147
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Notice:  Undefined variable: enablinglist in /home1/chasters/public_html/bcdev-francis/admin-dev/queuepreview/admin-managecamp-include.php on line 200
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Notice:  Undefined variable: templates in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1921
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1921
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Notice:  Undefined variable: fldlist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1987
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Notice:  Undefined variable: uplist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 2135
+[09-Mar-2016 12:33:18 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 678
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 681
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Notice:  Undefined variable: range_start in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 28
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Notice:  Undefined index: callcount in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 74
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Notice:  Undefined offset: 3082 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 57
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 59
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Notice:  Undefined offset: 3082 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 67
+[09-Mar-2016 12:33:19 Asia/Manila] PHP Notice:  Undefined index: callcount in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 74
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: pause in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wait in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wrap in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: dial in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: preview in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 3604 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 83
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index:  in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 3604 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 83
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: preview in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 84
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 3607 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 83
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Warning:  mysql_fetch_array() expects parameter 1 to be resource, boolean given in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 88
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: No Answer in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 104
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: dialedtime in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 109
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: CallFailed in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 104
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: Busy in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 104
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: Disconnected in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 104
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: NoDisposition in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 104
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: Recallable in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 104
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: contacts in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 199
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: talk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 200
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: realtalk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 201
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: talktotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 249
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: dialtotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 250
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: wraptotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 251
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: waittotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 252
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: pausetotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 253
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: previewtotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 254
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: chourstotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 255
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: conntotal in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 256
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: contacts in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 199
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: dial in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 200
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: talk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 200
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: realtalk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 201
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: dialedtime in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 202
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wrap in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 205
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: pause in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 206
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: preview in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 207
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wait in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 208
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 3082 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 212
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Warning:  Division by zero in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 9
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: contacts in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 199
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: talk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 200
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: realtalk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 201
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: dialedtime in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 202
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wrap in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 205
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: pause in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 206
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wait in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 208
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 3604 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 217
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index:  in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 217
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: callcount in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 239
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: contacts in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 199
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: talk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 200
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: realtalk in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 201
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: dialedtime in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 202
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wrap in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 205
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: pause in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 206
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: wait in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 208
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 3607 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 217
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index:  in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 217
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: callcount in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 239
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: act2 in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 347
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: pdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/snapshot.php on line 358
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: providerlist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1633
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: dislist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1688
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1688
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: NotInterested in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined offset: 2210 in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1688
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: Information Requested in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: Appointment Set in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: No Answer in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1670
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: dpdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1767
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: dmdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1775
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: keys in /home1/chasters/public_html/bcdev-francis/admin-dev/queuepreview/admin-managecamp-include.php on line 147
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: enablinglist in /home1/chasters/public_html/bcdev-francis/admin-dev/queuepreview/admin-managecamp-include.php on line 200
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: templates in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1921
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1921
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: fldlist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 1987
+[09-Mar-2016 12:33:29 Asia/Manila] PHP Notice:  Undefined variable: uplist in /home1/chasters/public_html/bcdev-francis/admin-dev/admin.php on line 2135
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined variable: act in /home1/chasters/public_html/bcdev-francis/admin-dev/adminsubsystem.php on line 16
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined variable: act in /home1/chasters/public_html/bcdev-francis/admin-dev/adminsubsystem.php on line 17
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 11
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined index: support in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 10
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined index: adminext in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 13
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined property via __get(): voip in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 1298 in /home1/chasters/public_html/bcdev-francis/classes/classes.php on line 96
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined variable: min in /home1/chasters/public_html/bcdev-francis/admin-dev/scripts.php on line 2130
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined index: impersonator in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 55
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Notice:  Undefined index: adminext in /home1/chasters/public_html/bcdev-francis/admin-dev/index.php on line 65
+[15-Mar-2016 12:53:06 Asia/Manila] PHP Fatal error:  Cannot redeclare phplog_on() (previously declared in /home1/chasters/public_html/bcdev-francis/dbconnect-dev.php:15) in /home1/chasters/public_html/bcdev-francis/dbconnect-dev.php on line 16
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined offset: 0 in /home1/chasters/public_html/bcdev-francis/classes/bluestrap.php on line 72
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined variable: roledrop in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 301
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Notice:  Undefined index: teams in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 136
+[15-Mar-2016 12:53:13 Asia/Manila] PHP Warning:  Invalid argument supplied for foreach() in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users_model.php on line 138
+[15-Mar-2016 12:53:14 Asia/Manila] PHP Notice:  Undefined variable: c in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/users.php on line 20
+[15-Mar-2016 12:53:15 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 12:53:23 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 12:53:24 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[15-Mar-2016 12:53:26 Asia/Manila] PHP Notice:  Undefined index: manageusers in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 262
+[15-Mar-2016 12:53:26 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 676
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: Array in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined offset: 1102 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined offset: 1466 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined offset: 1102 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined offset: 951 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 12:53:27 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: manageusers in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 262
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 676
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: Array in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined offset: 1102 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined offset: 1466 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined offset: 1102 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined offset: 951 in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 698
+[15-Mar-2016 12:53:29 Asia/Manila] PHP Notice:  Undefined index: lastlogin in /home1/chasters/public_html/bcdev-francis/admin-dev/switch.php on line 701
+[15-Mar-2016 12:53:30 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 12:53:30 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362
+[15-Mar-2016 13:07:29 Asia/Manila] PHP Notice:  Undefined variable: bdrop in /home1/chasters/public_html/bcdev-francis/admin-dev/users_management/index.php on line 14
+[15-Mar-2016 13:07:29 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-francis/admin-dev/phpfunctions.php on line 362

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+		<graph caption="" xAxisName="" yAxisName=""  shownames="0" decimalPrecision="0" formatNumberScale="0"><set name="AnsweringMachine" value="1" color="7a1996" /><set name="Drop" value="1" color="3b3833" /><set name="NotAvailable" value="1" color="b5f9b0" /><set name="Disconnected" value="1" color="4f5928" /></graph>

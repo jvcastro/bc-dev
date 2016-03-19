@@ -1,0 +1,34 @@
+[14-Mar-2016 09:42:06 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 658
+[14-Mar-2016 09:42:06 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 661
+[14-Mar-2016 09:42:06 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 308
+[14-Mar-2016 09:42:06 Asia/Manila] PHP Notice:  Undefined variable: plist_query in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 313
+[14-Mar-2016 09:42:06 Asia/Manila] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/calldata.php on line 9
+[14-Mar-2016 09:42:06 Asia/Manila] PHP Notice:  Undefined variable: table in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/calldata.php on line 152
+[14-Mar-2016 09:42:35 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 658
+[14-Mar-2016 09:42:35 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 661
+[14-Mar-2016 09:42:35 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 308
+[14-Mar-2016 09:42:35 Asia/Manila] PHP Notice:  Undefined variable: plist_query in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 313
+[14-Mar-2016 09:42:35 Asia/Manila] PHP Notice:  Undefined variable: rows in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/calldata.php on line 88
+[14-Mar-2016 09:43:28 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 658
+[14-Mar-2016 09:43:28 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 661
+[14-Mar-2016 09:43:28 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 308
+[14-Mar-2016 09:43:28 Asia/Manila] PHP Notice:  Undefined variable: plist_query in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 313
+[14-Mar-2016 09:43:28 Asia/Manila] PHP Notice:  Undefined index: options in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 342
+[14-Mar-2016 09:50:24 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 658
+[14-Mar-2016 09:50:24 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 661
+[14-Mar-2016 09:50:24 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 308
+[14-Mar-2016 09:50:24 Asia/Manila] PHP Notice:  Undefined variable: plist_query in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 313
+[14-Mar-2016 09:50:24 Asia/Manila] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/calldata.php on line 9
+[14-Mar-2016 09:50:24 Asia/Manila] PHP Notice:  Undefined variable: table in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/calldata.php on line 152
+[14-Mar-2016 09:50:50 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 658
+[14-Mar-2016 09:50:50 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 661
+[14-Mar-2016 09:50:50 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 308
+[14-Mar-2016 09:50:50 Asia/Manila] PHP Notice:  Undefined variable: plist_query in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 313
+[14-Mar-2016 09:50:50 Asia/Manila] PHP Notice:  Undefined variable: rows in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/calldata.php on line 88
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Notice:  Undefined index: PHPSESSID in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 658
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Warning:  strlen() expects parameter 1 to be string, array given in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 661
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Notice:  Undefined variable: plist in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 308
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Notice:  Undefined variable: plist_query in /home1/chasters/public_html/bcdev-vince/admin-dev/phpfunctions.php on line 313
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Notice:  Undefined index: act in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/agentperformance.php on line 26
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Notice:  Undefined variable: op in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/agentperformance.php on line 30
+[14-Mar-2016 09:50:57 Asia/Manila] PHP Notice:  Undefined variable: table in /home1/chasters/public_html/bcdev-vince/admin-dev/reports/agentperformance.php on line 300

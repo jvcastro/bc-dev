@@ -1,0 +1,67 @@
+CACHE MANIFEST
+#version 1.0 01-28-2016
+
+CACHE:
+# index.html is cached by default anyway -- this is just to be explicit
+index.php 
+ext/resources/css/ext-all.css
+ext/resources/css/xtheme-slate.css
+../jquery/css/chat/chat.css
+../jquery/css/chat/screen.css
+../jquery/datatable/css/jquery.dataTables.css
+../jquery/pageguide/dist/css/pageguide.min.css
+ext/adapter/ext/ext-base.js
+ext/ext-core.js
+ext/ext-custom.js
+../jquery/js/jquery-1.7.2.min.js
+../jquery/js/jquery-ui-1.8.12.custom.min.js
+../jquery/js/blockui.js
+../jquery/js/chat.js
+../jquery/datatable/js/jquery.dataTables.js?v2
+../jquery/pageguide/dist/js/pageguide.min.js
+tinymce/jscripts/tiny_mce/tiny_mce.js
+../jquery/css/redmond/jquery-ui-1.8.12.custom.css
+styles/style.css?v1
+images/bclogo-small.png
+live.php
+../chat.php
+../listener.php
+../dbconnect.php
+../jquery/css/redmond/images/ui-bg_inset-hard_100_fcfdfd_1x100.png
+../jquery/css/redmond/images/ui-bg_flat_0_aaaaaa_40x100.png 
+images/bgslate.gif
+../jquery/css/redmond/images/ui-bg_glass_85_dfeffc_1x400.png 
+../jquery/css/redmond/images/ui-bg_glass_75_d0e5f5_1x400.png 
+ext/resources/images/slate/toolbar/bg.gif 
+ext/resources/images/slate/toolbar/tb-btn-sprite.gif
+icons/livemonitor.png 
+ext/resources/images/slate/toolbar/btn-arrow.gif 
+icons/campaigns.png 
+icons/lists.png 
+icons/users.png 
+icons/clients2.png 
+icons/reports.png 
+icons/chat.png 
+icons/qaportal.png 
+icons/logout.png 
+../jquery/datatable/images/sort_both.png
+../jquery/datatable/images/sort_asc.png
+../jquery/datatable/images/back_disabled.png
+../jquery/datatable/images/forward_disabled.png
+../jquery/datatable/images/forward_enabled.png
+icons/bullet_arrow_up.png
+icons/bullet_arrow_down.png
+icons/refresh.png
+../jquery/css/redmond/images/ui-bg_inset-hard_100_f5f8f9_1x100.png
+http://assets.zendesk.com/external/zenbox/v2.6/zenbox.css
+http://assets.zendesk.com/external/zenbox/v2.6/zenbox.js
+
+# / is wildcard for all pages  
+# so, for all pages, offline.html will be displayed if the user is offline
+# NB path is relative to this file
+
+
+# Resources that require the user to be online
+
+NETWORK:
+*
