@@ -53,8 +53,31 @@
 }
 .vftab {
     float:left;
-    width:30%;
+    width:25%;
 }
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+#customdatatable{
+	width: 100%;
+    float: left;
+}
+#customdatatable h3{
+	padding: 10px 0;
+}
+.dataTables_wrapper {
+    overflow-x: scroll;
+}
+.custom-control{
+	width: 100%;
+    float: left;
+    padding: 20px;
+    text-align: center;
+}
+.cc-button {
+    padding: 10px 20px;
+}
+
 .vftab .ck {
     text-align:center;
 }

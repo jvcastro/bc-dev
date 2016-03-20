@@ -27,7 +27,6 @@ if ($act == 'getscriptdata')
     // print_r($sdata);
     // print_r($newsdata);
     /*$sdata = array_unique(array_merge($getcf, $newsdata));*/
-
     // echo $fetchcf['customfields'];
     // print_r($getcf);
     // print_r($newsdata);
@@ -42,7 +41,6 @@ if ($act == 'getscriptdata')
         $dt[$ct]['value'] = $value;
         $ct++;
     }
-
     echo json_encode($dt);
     exit;
 }
@@ -62,7 +60,7 @@ if ($act == 'getnextpage')
     /* ADDED BY Vincent Castro */
     /***************************/
     /* SAVE SCRIPT */
-    $script = $_REQUEST['script'];
+    $script = $_REQUEST['script']; 
     foreach ($script as $key => $value) {
         if(!empty($value['value'])){
             $renderData[$value['name']] = $value['value'];
@@ -74,7 +72,7 @@ if ($act == 'getnextpage')
     } else {
       customdata::updatecf($_REQUEST['leadid'],$data);
     }
-    $parentid = $_REQUEST['parentid'];
+    $parentid = $_REQUEST['parentid']; 
     $nextpage = $callscripts->getnextpage($parentid, $sdata);
     foreach ($nextpage as $id => $next)
     {
@@ -91,7 +89,6 @@ $lab = 'Save';
 if ($callscripts->pagecount() > 1)
 {
     $lab = "Next";
-
 }
 echo '<div id="cinfo"><h3>Customer Information</h3>
     <div>
@@ -100,6 +97,90 @@ echo '<div id="cinfo"><h3>Customer Information</h3>
         <tr><td>Phone:</td><td>'.$lead['phone'].'</td></tr>
         <tr><td>Address:</td><td>'.$lead['address1'].' '.$lead['address2'].', '.$lead['city'].' '.$lead['state'].' '.$lead['country'].' '.$lead['zip'].'</td></tr>
             </table>
+    </div>
+</div>';
+echo '<div id="oinfo"><h3>Other Information</h3>
+    <div>
+      <table>';
+
+        $adminCustomFieldsGet = mysql_query("SELECT customfields FROM projects WHERE projectid = '$projid'");
+        $adminCustomFieldsRow = mysql_fetch_assoc($adminCustomFieldsGet);
+        $adminCustomFields = json_decode($adminCustomFieldsRow['customfields']);
+
+        $objOrig = $adminCustomFields;
+        $objOld = $sdata;
+        $arrOrig = get_object_vars($objOrig);
+        $arrOld = get_object_vars($objOld);
+        $newOld = array();
+        $newData = array();
+        // print_r($arrOrig);
+        // echo "<br><br>";
+        // print_r($arrOld);
+        // echo "<br><br>";
+        foreach ($arrOrig as $key => $value) {
+            $newKey = preg_replace('/\s+/', '_', $key);
+            $compareKey[] = $newKey;
+        }
+        foreach ($arrOld as $key => $value) {
+            $newKey = preg_replace('/\s+/', '_', $key);
+            $compareKey2[] = $newKey;
+            $newOld[$newKey] = $value;
+        }
+        //SORT IN ORDER
+        $properOrderedArray = array_merge(array_flip($compareKey), $newOld);
+        // print_r($properOrderedArray);
+        // MISSING ARRAY
+        if(count($compareKey) > count($compareKey2)){
+            $comparison = array_flip(array_diff($compareKey, $compareKey2));
+        }
+        // print_r($comparison);
+        if(empty($comparison)){
+            foreach ($properOrderedArray as $key => $value) {
+                $newData[str_replace("_", " ", $key)] = $value;
+            }
+        } else {
+            foreach ($properOrderedArray as $key => $value) {
+                foreach ($comparison as $comkey => $comvalue) {
+                    if($comkey == $key){
+                        $newData[str_replace("_", " ", $key)] = "";
+                    } else {
+                        $newData[str_replace("_", " ", $key)] = $value;
+                    }
+                }
+            }
+        }
+        // print_r($newData);
+        if(empty($objOld)){
+            foreach ($arrOrig as $key => $value) {
+                $newData[$key] = "";
+            }
+        }
+        // echo json_encode($newData);
+
+        if ($projid > 0) {
+            $res = mysql_query("SELECT customfields FROM projects WHERE projectid = '$projid'");
+            $row = mysql_fetch_assoc($res);
+            $ret = json_decode(stripslashes($row['customfields']),true);
+            foreach ($ret as $key => $value) {
+                $leadCustom[$value] = array('name' => $key, 'value' => $newData[$key]);
+            }
+            // $ret = json_decode(stripslashes($row['customfields']),true);
+            // echo json_encode($leadCustom);
+        }
+
+        if(!$countRows){
+          foreach ($adminCustomFields as $key => $value) {
+            echo "<tr><td>$value:</td><td></td></tr>";
+          }
+        } else {
+          foreach ($leadCustom as $key => $value) {
+            echo "<tr><td>$key:</td><td>".$value["value"]."</td></tr>";
+          }
+        }
+
+        
+        
+echo '</table>
     </div>
 </div>';
 echo '<form id="scriptbod" name="scriptbod">
@@ -153,18 +234,9 @@ echo '</form>';
 /* ADDED BY Vincent Castro */
 /***************************/
     $(document).ready(function(){
-        populatescript();
-
-        $("#scriptbod input, #scriptbod select").change(function(){
+        $("#scriptbod input, #scriptbod select").blur(function(){
             // var input = $(this).attr('name');
-            $("[name='"+$(this).attr('name')+"']").val($("#scriptbod").find("[name='"+$(this).attr('name')+"']").val());
-            console.log("Changing script custom field: "+$(this).attr('name'));
-            submitcustom($("#leadid").val());
-        });
-        $("#othercontent input").change(function(){
-            // var input = $(this).attr('name');
-            $("[name='"+$(this).attr('name')+"']").val($("#othercontent").find("[name='"+$(this).attr('name')+"']").val());
-            console.log("Changing other information custom field: "+$(this).attr('name'));
+            nextpage('<?=$projid?>','<?=$mainpage?>')
         });
         $("#scriptbod input[type=text], #scriptbod select").hover(function(){
             var input = $(this).attr('name');

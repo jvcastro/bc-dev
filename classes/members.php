@@ -14,7 +14,7 @@ class members extends dataTable {
        public static function getalldetails()
        {
            global $bcid;
-           $res = mysql_query("SELECT *, memberdetails.afirst, memberdetails.alast, memberdetails.team from members left join memberdetails on members.userid = memberdetails.userid where bcid = $bcid and active = 1 AND isdeleted = 0 AND alast <> '' AND afirst <> '' ORDER BY alast,afirst,userlogin");
+           $res = mysql_query("SELECT *, memberdetails.afirst, memberdetails.alast, memberdetails.team from members left join memberdetails on members.userid = memberdetails.userid where bcid = $bcid and active = 1 AND alast <> '' AND afirst <> '' ORDER BY alast,afirst,userlogin");
            while ($row = mysql_fetch_assoc($res))
            {
                $ret[$row['userid']] = $row;
@@ -24,7 +24,7 @@ class members extends dataTable {
        public static function getmembersbyteamid($teamid)
        {
            global $bcid;
-           $res = mysql_query("SELECT *, memberdetails.afirst, memberdetails.alast, memberdetails.team from members left join memberdetails on members.userid = memberdetails.userid where bcid = $bcid and active = 1 AND isdeleted = 0 AND alast <> '' AND afirst <> '' ORDER BY alast,afirst,userlogin");
+           $res = mysql_query("SELECT *, memberdetails.afirst, memberdetails.alast, memberdetails.team from members left join memberdetails on members.userid = memberdetails.userid where bcid = $bcid and active = 1 AND alast <> '' AND afirst <> '' ORDER BY alast,afirst,userlogin");
            while ($row = mysql_fetch_assoc($res))
            {
                $teams = json_decode($row['team'],true);

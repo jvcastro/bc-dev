@@ -14,18 +14,18 @@ $scripts->currentscript = $currentscript;
 </form>
 </div>
 <div id="editormenu">
-        <div id="inputfields">
-            <input type="hidden" id="pid" value="<?=$pid;?>"></input>
-            <ul id="inmenu" class="domenu">
-                <li><h3>Insert / Drag Fields</h3></li>
-                <li>
-                    <a href="#" draggable="true" ondragstart="dragstart(event)" ondragend="fieldparams('text')" onclick="fieldparams('text')">Textfield</a>
-                </li>
-                <li>
-                    <a href="#" draggable="true" ondragstart="dragstart(event)" ondragend="fieldparams('select')" onclick="fieldparams('select')">Dropdown</a>
-                </li>
-            </ul>
-        </div>
+    <div id="inputfields">
+        <input type="hidden" id="pid" value="<?=$pid;?>"></input>
+        <ul id="inmenu" class="domenu">
+            <li><h3>Insert / Drag Fields</h3></li>
+            <li>
+                <a href="#" draggable="true" ondragstart="dragstart(event)" ondragend="fieldparams('text')" onclick="fieldparams('text')">Textfield</a>
+            </li>
+            <li>
+                <a href="#" draggable="true" ondragstart="dragstart(event)" ondragend="fieldparams('select')" onclick="fieldparams('select')">Dropdown</a>
+            </li>
+        </ul>
+    </div>
 <div id="pages" style="display:none">
 <ul class="domenu">
     <li><h3>Script Pages</h3></li>

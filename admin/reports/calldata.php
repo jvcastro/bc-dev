@@ -32,32 +32,61 @@ if ($act == 'view' || $act== 'export')
 				$q.= " = '$projectid' ";
 			}
 		$q.= " and finalhistory.startepoch >= '".strtotime($start)."' and finalhistory.startepoch <= '".strtotime($end. " 24:59:59")."' and finalhistory.bcid=".$bcid." group by callid ";
+
 		$headers[] = 'Client';
-                $headers[] = 'Campaign';
-                $headers[] = 'ListId';
+        $headers[] = 'Campaign';
+        $headers[] = 'ListId';
 		$headers[] = 'Date';
 		$headers[] = 'Phone';
 		$headers[] = 'Started';
 		$headers[] = 'Duration';
 		$headers[] = 'Status';
 		$headers[] = 'Disposition';
-                $headers[] = 'Agent';
+        $headers[] = 'Agent';
+        $headers[] = 'Call Type'; /* ADDED BY Vincent Castro */
+
 		$res = mysql_query($q);
 		$ct = 0;
 		while ($r = mysql_fetch_assoc($res))
-			{
-                                $rows[$ct]['1'] = $r['clientname'];
-				$rows[$ct]['1a'] = $projects['data'][$r['projectid']]['projectname'];
-                                $rows[$ct]['1b'] = $r['listid'];
-				$rows[$ct]['2'] = date("Y-m-d",$r['startepoch']);
-				$rows[$ct]['3'] = $r['phone'];
-				$rows[$ct]['4'] = date("H:i:s",$r['startepoch']);
-				$rows[$ct]['5'] = $r['endepoch'] - $r['startepoch'];
-				$rows[$ct]['6'] = $r['systemdisposition'];
-				$rows[$ct]['7'] = $r['agentdisposition'];
-                                $rows[$ct]['8'] = $agentname[$r['userid']];
-				$ct++;
-			}
+		{
+            $rows[$ct]['1'] = $r['clientname'];
+			$rows[$ct]['1a'] = $projects['data'][$r['projectid']]['projectname'];
+            $rows[$ct]['1b'] = $r['listid'];
+			$rows[$ct]['2'] = date("Y-m-d",$r['startepoch']);
+			$rows[$ct]['3'] = $r['phone'];
+			$rows[$ct]['4'] = date("H:i:s",$r['startepoch']);
+			$rows[$ct]['5'] = $r['endepoch'] - $r['startepoch'];
+			$rows[$ct]['6'] = $r['systemdisposition'];
+			$rows[$ct]['7'] = $r['agentdisposition'];
+            $rows[$ct]['8'] = $agentname[$r['userid']];
+            /* ADDED BY Vincent Castro */
+            if($projects['data'][$r['projectid']]['dialmode'] == 'inbound'){
+            	$rows[$ct]['9'] = ($r['endepoch'] == NULL && $r['userid'] > 0 ? "Outbound" : "Inbound"); 
+            } else {
+            	$rows[$ct]['9'] = "Outbound"; 
+            }
+            /* ADDED BY Vincent Castro */
+            // $rows[$ct]['9'] = $r['endepoch'] ."== NULL &&". $r['userid'] ."> 0";
+			$ct++;
+		}
+		?>
+
+		<script type="text/javascript">
+		/***************************/
+		/* ADDED BY Vincent Castro */
+		/***************************/
+			$(function() {
+				$("div#results table").dataTable({
+			        "iDisplayLength": 10,
+			        "fnDrawCallback": function() {
+			            $(".bulk").click(function(e){
+			                e.stopPropagation();
+			            });
+			        }
+			    });
+			});
+		</script>
+		<?php
 		if ($act == 'export')
 			{
 				$table = tablegen($headers,$rows,"880");
@@ -76,6 +105,10 @@ if ($act == 'view' || $act== 'export')
 <script type="text/javascript" src="../../jquery/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="../../jquery/js/jquery-ui-1.8.10.custom.min.js"></script>
 <link href="../../jquery/css/redmond/jquery-ui-1.8.10.custom.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../../jquery/datatable/js/jquery.dataTables.min.js"></script>
+<link href="../../jquery/datatable/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+
 <link href="cstyle.css" rel="stylesheet" type="text/css" />
 <style>
 .ui-widget {
@@ -129,8 +162,8 @@ if ($act == 'view' || $act== 'export')
 </body>
 <script>
 $(function() {
-		$( ".dates" ).datepicker({ dateFormat: 'yy-mm-dd' });
-	});
+	$( ".dates" ).datepicker({ dateFormat: 'yy-mm-dd' });
+});
 function exportrep()
 {
 	var proj = document.getElementById('projectid').value;

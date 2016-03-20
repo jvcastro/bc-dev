@@ -23,11 +23,7 @@ class lists {
       if (strlen($phone) > 0)
       {
       mysql_query("update leads_done set dispo = '$dispo', hopper = 1 where projectid = $pr and listid in ($lstr) and phone = '".$phone."'");
-      echo "update leads_done set dispo = '$dispo', hopper = 1 where projectid = $pr and listid in ($lstr) and phone = '".$phone."'";
-
       mysql_query("update leads_raw set dispo = '$dispo', hopper = 1 where listid in ($lstr) and phone = '".$phone."'");
-      echo "update leads_raw set dispo = '$dispo', hopper = 1 where listid in ($lstr) and phone = '".$phone."'";
-
       $affected = mysql_affected_rows();
       mysql_query("delete from hopper where projectid = $pr and phone = '$phone'"); 
       }
@@ -193,7 +189,7 @@ class lists {
         {
             $userq = "and assigned = '$userid'";
         }
-         $res = mysql_query("SELECT $qf, projectid, assigned from leads_done where projectid in ($projectid) and epoch_timeofcall >= ".strtotime($start)." and epoch_timeofcall <= ".strtotime($end." 23:59:59")." $userq $dispoq") or die(mysql_error());
+         $res = mysql_query("SELECT $qf, projectid, assigned from leads_done where projectid in ($projectid) and epoch_timeofcall >= '".strtotime($start)."' and epoch_timeofcall <= '".strtotime($end." 23:59:59")."' $userq $dispoq") or die(mysql_error());
         while ($row = mysql_fetch_assoc($res))
         {
             $records[$row['leadid']] = $row;

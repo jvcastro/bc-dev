@@ -40,9 +40,9 @@ if ($isadmin != 'user' && !checkrights('admin_portal'))
 <script type="text/javascript" src="../jquery/datatable/js/jquery.dataTables.js?v2"></script>
 <script type="text/javascript" src="../jquery/pageguide/dist/js/pageguide.min.js"></script>
 <script type="text/javascript" src="tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
-<script type="text/javascript" src="https://assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
+<script type="text/javascript" src="http://assets.zendesk.com/external/zenbox/v2.6/zenbox.js"></script>
 <style type="text/css" media="screen, projection">
-  @import url(https://assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
+  @import url(http://assets.zendesk.com/external/zenbox/v2.6/zenbox.css);
 </style>
 <link href="../jquery/css/redmond/jquery-ui-1.8.12.custom.css" rel="stylesheet" type="text/css" />
 <link href="styles/style.css?v1" rel="stylesheet" />
@@ -66,7 +66,7 @@ $exitimp .= '<br><a href="#" onclick="window.Zenbox.show()">Support</a>';
 ?>
 </head>
 <body onload="indicator(); getinfo();">
-<iframe id='manifest_iframe_hack' style='display: none;' src='bcadmin.appcache.html'></iframe>
+<!-- <iframe id='manifest_iframe_hack' style='display: none;' src='bcadmin.appcache.html'></iframe> -->
 <div id="container">
         <div id="upperlogo"><?=$systitle;?></div>
         <div style="float:right"><?php echo $loggedin;?>: <a href="#" onclick="profile();"><?php echo $_SESSION['username'];?></a><?php echo $exitimp;?></div>

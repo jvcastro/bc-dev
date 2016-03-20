@@ -18,7 +18,6 @@ include_once '../../phpmailer/PHPMailerAutoload.php';
 require "../../classes/mailer.php";
 include "../phpfunctions.php";
 include "qaver.php";
-$agentids = getagentids($bcid);
 include "qaverswitch.php";
 $projects = projectlist($bcid);
 $dispolist = dispolist($_POST['projectid']);
@@ -46,6 +45,7 @@ $dispolist = dispolist($_POST['projectid']);
 }
 </style>
 </head>
+<!-- <body oncopy="return false" oncut="return false" onpaste="return false"> -->
 <body>
 <div id="container">
 <div id="header">
@@ -85,20 +85,12 @@ else $alsel = '';
 <select name="agentid">
 <option value="all">All</option>
 <?
+$agentids = getagentids($bcid);
 foreach ($agentids as $agid)
 	{
-        if ($_POST['agentid'] == $agid['userid'])
-        {
-            ?>
-            <option SELECTED value="<?=$agid['userid'];?>"><?php echo $agid['alast'] . ", " . $agid['afirst'] . " - (" . $agid['userlogin'] . ")";?></option>
-            <?
-        }
-        else
-        {            
-    		?>
-            <option value="<?=$agid['userid'];?>"><?php echo $agid['alast'] . ", " . $agid['afirst'] . " - (" . $agid['userlogin'] . ")";?></option>
-            <?
-        }
+		?>
+        <option value="<?=$agid['userid'];?>"><?php echo $agid['alast'] . ", " . $agid['afirst'] . " - (" . $agid['userlogin'] . ")";?></option>
+        <?
 	}
 ?>
 </select>
@@ -120,8 +112,10 @@ if ($_REQUEST['datetype'] == 'dateset')
     <div style="text-align:right"><input type="button" value="Customize View" style="padding:5px" onclick="togglecv()" /></div>
 </div>
 <div id="cview">
+    <h3 style="padding-bottom: 10px;"> Default Fields</h3>
     <?php
     $rct = 0;
+    $ctmctr = 0;
     foreach ($viewfields as $key=>$arv)
     {
         if ($rct == 7) {echo '</table>';$rct = 0;}
@@ -129,13 +123,35 @@ if ($_REQUEST['datetype'] == 'dateset')
         {
             echo '<table class="vftab"><tr><th>Column</th><th>Show</th></tr>';
         }
+        /***************************/
+        /* ADDED BY Vincent Castro */
+        /***************************/
+        if($arv[2] == "custom"){
+            if($ctmctr == 0){
+                echo '</table><div id="customdatatable"><h3>Custom Fields</h3><table class="vftab"><tr><th>Column</th><th>Show</th></tr>';
+            } elseif ($ctmctr > 0) {
+                # code...
+            }
+            $ctmctr++;
+            $rct = 1;
+        }
         $checked = '';
         if ($arv[1] == 1) $checked = "checked";
         echo '<tr><td class="label">'.$arv[0].'</td><td class="ck"><input type="checkbox" name="viewfields[]" class="vfs" value="'.$key.'" '.$checked.'></td></tr>';
         $rct++;
     }
     echo '</table>';
+    echo ($ctmctr > 0 ? '</div>' : ''); /* ADDED BY Vincent Castro */
     ?>
+    <!--
+    /***************************/
+    /* ADDED BY Vincent Castro */
+    /***************************/
+    -->
+    <div class="custom-control">
+        <button class="cc-button" data-action="selectall">Select All</button>
+        <button class="cc-button" data-action="clearall">Clear All</button>
+    </div>
 </div>
 <div class="clear"></div>
 <hr />
@@ -275,6 +291,8 @@ function qamail(leadid,event)
         //$("#dispostion").html(data);
                 $("#container").append('<div id="qamailcont" style="display:none">'+data+'</div>');
                 emaillead(leadid);
+                // alert($("#reassign_agent_select").val());
+                
         }
     });
 }
@@ -293,13 +311,14 @@ function doslots(leadid,clientid)
 }
 function dosearch()
 	{
-                var vf = $("input.vfs").serialize();
+        var vf = $("input.vfs").serialize();
 		document.filterform.action = 'qa.php?act=search&'+vf;
 		document.filterform.submit();
 	}
 function doexport()
 	{
-		document.filterform.action = 'qa.php?act=export';
+        var vf = $("input.vfs").serialize();
+		document.filterform.action = 'qa.php?act=export&'+vf;
 		document.filterform.submit();
 	}
 function jpplay(media)
@@ -387,6 +406,12 @@ function getlead(leadid)
                                         $(this).ajaxSubmit(); 
                                 });
                         gettinglead = false;
+                        /***************************/
+                        /* ADDED BY Vincent Castro */
+                        /***************************/
+                        if ($("#disposition select").val() == "ScheduledCallback") {
+                            disposelect( $("#disposition select").val() );
+                        }
                         }
                     });
         }
@@ -395,12 +420,52 @@ function projectchange()
 	{
 		var v = $("#projectid").val();
 		$.ajax({
-  				url: "qa.php?act=updatedispolist&projectid="+v,
-  				success: function(data){
-    	 			$("#dispostion").html(data);
-  					}
-				});
+			url: "qa.php?act=updatedispolist&projectid="+v,
+			success: function(data){
+ 			    $("#dispostion").html(data);
+			}
+		});
+
+        getcustomdata(v);
 	}
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+function getcustomdata(pid){
+    $("#customdatatable").remove();
+    $.ajax({
+        url: "qa.php?act=getcustomdata&projectid="+pid,
+        success: function(data){
+            $(".custom-control").before(data);
+        }
+    });
+}
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+function disposelect(data){
+    if (data == "ScheduledCallback") {
+        category = 'agent';
+    } else {
+        var category = $(data).find("option:selected").data('category');
+    }
+    // alert(category);
+    $("#reassign_agent").remove();
+    $("#oldagent").hide();
+    if(category == 'agent'){
+        var pid = $("#projectid").val();
+        var userid = $("#assignedid").val();
+        $.ajax({
+            url: "qa.php?act=showagents&projectid="+pid+"&assigned="+userid,
+            success: function(data){
+                $("#tableheader").after(data);
+            }
+        });
+    } else {
+        $("#reassign_agent").remove();
+        $("#oldagent").show();
+    }
+}
 function savelead()
 	{
 		$("#updatelead").ajaxSubmit(function(){
@@ -477,6 +542,7 @@ function approveto()
         })
     }
 }
+
 function doassignto()
 {
     var contactid = $("#assigntoclientcontact").val();
@@ -511,6 +577,8 @@ function bulkqa(){
     if (action == 'approvedto')
     {
         approveto();
+    } else if (action == 'callback') { /* ADDED BY Vincent Castro */
+        transfercallback();
     }
     else {
     var ct = 0;var bid = new Array();
@@ -542,6 +610,59 @@ function bulkqa(){
         }
     }
 }
+/* ADDED BY Vincent Castro */
+function transfercallback(){
+    var pid = $("#projectid").val();
+    if (isNaN(pid))
+    {
+        alert("Campaign MUST be selected!");
+    } else {
+        $.ajax({
+            url: 'qa.php?act=showagentsbulk&projectid='+pid,
+            type: 'get',
+            success: function(resp){
+                $("#dialogcontainer").html(resp);
+                $("#dialogcontainer").dialog();
+            }
+        })
+    }
+}
+
+/* ADDED BY Vincent Castro */
+function bulktransfercallback(data){
+    var checkbox = $(".dataTable input[name=bulkaction]");
+    var leadid = [];
+    var ctr = 0;
+    checkbox.each(function(){
+        if(this.checked){
+            leadid.push($(this).val());
+            // console.log( this.closest("tr").find(".dispo") );
+            if( $(this).closest("tr").find("td.dispo").html() != "ScheduledCallback"){
+                ctr++;
+            }
+        }
+    });
+
+    if(ctr){
+        alert("Only leads with callback can be transfer!");
+         $("#dialogcontainer").dialog("close");
+         $("#bulkaction").val(0);
+    }
+
+    var agentid = $(data).find("option:selected").val();
+
+    if(leadid.length && agentid && ctr == 0){
+        $.ajax({
+            url: 'qa.php?act=transferagentsbulk',
+            data: {'leadid': leadid, 'agentid': agentid},
+            type: 'get',
+            success: function(resp){
+                location.reload();
+            }
+        })
+    }
+}
+
 function togglecheckbox()
 {
     if ($("#checkboxall").is(":checked"))
@@ -576,7 +697,34 @@ function player_window(projectid, leadid, projectlinkurl)
         }
     });
 }
+
+
 $(document).ready(function(e) {
+    /***************************/
+    /* ADDED BY Vincent Castro */
+    /***************************/
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null){
+           return null;
+        }
+        else{
+           return results[1] || 0;
+        }
+    }
+    var v = $("#projectid").val();
+    if(v != "" && $.urlParam('act') != "search") getcustomdata(v);
+
+    $(".cc-button").click(function(){
+        var action = $(this).data('action');
+        if(action == "selectall"){
+            $(".vfs").prop('checked', true);
+        } else if(action == "clearall"){
+            $(".vfs").prop('checked', false);
+        }
+    })
+    /** end **/
+
     $('.dtpick').datetimepicker({
         format: 'Y-m-d H:i',
         step: 15
@@ -596,6 +744,7 @@ $(document).ready(function(e) {
                 '<option value="approvedto">Approve To</option>'+
                 '<option value="failed">Failed</option>'+
                 '<option value="incomplete">Incomplete</option>'+
+                '<option value="callback">Transfer Callback</option>'+
                 '</select>');
 });
 </script>

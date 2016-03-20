@@ -11,24 +11,6 @@ var dialactions = new Object();
 dialactions.next = false;
 dialactions.submit = false;
 var cbable = true;
-<?php
-// echo ($session->user['chat'] == 'enabled') ? '<script type="text/javascript" src="../jquery/js/chat.js"></script>' : '';
-if ($session->user['chat'] == 'enabled')
-{
-    if (ui_getOpt($p, 'isChatEnabled'))
-    {
-        echo "var isChatEnabled = true; \n";
-    }
-    else
-    {
-        echo "var isChatEnabled = false; \n";
-    }
-}
-else
-{
-    echo "var isChatEnabled = false; \n";
-}
-?>
 function togids()
 {
     if ($("#togglecheck").prop('checked'))
@@ -97,7 +79,7 @@ function checkdialstate()
                             //enableb('cbtab');
                             enablecbclick();
                         }
-                    if (dialmode == 'predictive' || dialmode == 'inbound')
+                    if (dialmode == 'predictive')
                         {
                             enableb('nbb');
                         }
@@ -153,11 +135,9 @@ function handleHttpResponse(resp)
                                         disableb('dbb');
 					showb('start');
 					showb('nlbutton');
-                    enableb('nlbutton');
-                    //enableb('cbtab');
-                    enablecbclick();
-					if ( typeof(tteventsmenu) != 'undefined')
-						timeoutPause();
+                                        enableb('nlbutton');
+                                        //enableb('cbtab');
+                                        enablecbclick();
 				}
 				else if (results == 'callended') {
 					astatus = 'hanged';
@@ -220,17 +200,6 @@ function handleHttpResponse(resp)
                                     //disableb('cbtab');
                                      disablecbclick();
                                      newinboundcall();
-                                }
-                                else if (results == 'newinboundcallmanual')
-                                {
-                                    astatus = 'New Inbound Call';
-                                    enableb('hbb');
-                                    hideb('pause');
-                                    showb('nbb');
-                                    disableb('nbb');
-                                    //disableb('cbtab');
-                                     disablecbclick();
-                                     newinboundcallmanual();
                                 }
 				else {
 				if (dialmode == 'predictive' || dialmode == 'blended' || dialmode == 'inbound')
@@ -343,13 +312,14 @@ $('.add_to_this').each(function() {
   $(this).append(link);
   link.click(handler);
 });
+
 function loadnewcustomdata(data)
 {
     var cust = jQuery.parseJSON(data);
     $("#othercontent").html('');
     var ct = 0;
     $.each(cust,function(index, value){
-        $("#othercontent").append('<div><label>'+index+'</label><input type="text" name="'+index+'" "></div><div class="clear"></div>');
+        $("#othercontent").append('<div><label>'+value+'</label><input type="text" name="'+index+'" "></div><div class="clear"></div>');
         ct++;
     });
     $("#otherinfo").accordion("resize");
@@ -365,17 +335,18 @@ function loadcustomdata(data)
     $("#othercontent").html('');
     var ct = 0;
     $.each(cust,function(index, value){
-        $("#othercontent").append('<div><label>'+index+'</label><input type="text" name="'+index+'" value="'+value+'"></div><div class="clear"></div>');
+        $("#othercontent").append('<div><label>'+index+'</label><input type="text" name="'+value.name+'" value="'+value.value+'"></div><div class="clear"></div>');
         ct++;
     });
     /***************************/
     /* ADDED BY Vincent Castro */
     /***************************/
-    $("#othercontent input").change(function(){
+    $("#othercontent input").blur(function(){
         var leadid = $("#leadid").val();
         submitcustom(leadid);
         // populatescript();
     });
+
     $("#otherinfo").accordion("resize");
     $("#otherinfo2").accordion("resize");
     if (ct > 0) {
@@ -413,7 +384,7 @@ if (dialmode == 'predictive' || dialmode == 'blended' || dialmode == 'inbound')
 	}
 }
 function toggledial() {
-	var uid = '<?=$userid;?>';
+	var uid = '<?=$uid;?>';
 	if (dialmode == 'predictive' || dialmode == 'blended' || dialmode == 'inbound')
 	{
 	if (clicked == 0) 
@@ -431,7 +402,7 @@ function toggledial() {
                     url:  url + '?uid=' +uid+'&act=dopause',
                     success: handleHttpResponse
                 });
-                // gettags();
+                gettags();
 		}
 	}
 }
@@ -581,45 +552,42 @@ function getds(dt)
 			subformvalues();
         } 
 		function subformvalues() {
-            // 03/06 - prevlead() starts by activating main panel first
-            var t =  Ext.ComponentMgr.get("maintabpanel");
-            t.activate(0);
-            var thi = document.getElementById('disposition').selectedIndex;
+                        var thi = document.getElementById('disposition').selectedIndex;
 			var sId = document.getElementById('leadid').value;
 			if (thi == 0 && sId !=0 && astatus != 'cbview')
 			{
-    			dispose(subformvalues);
+			dispose(subformvalues);
 			}
 			else
 			{
-    			var uId = '<?=$userid;?>';
-    			if (dialmode == 'progressive' && sId == 0)
-    			{
-                    if (dialactions.next == false)
-                    {
-                        dialactions.next = true;
-                        $.ajax({
-                        url: url + '?dialmode='+dialmode+'&uid=' + uId + '&act=next&lid=' + escape(sId),
-                            success: function(resp){
-                                dialactions.next = false;
-                                window.astatus = 'dialing';
-                                handleHttpResponse(resp);
-                                //showrecordcontrol();
-                            },
-                            error: function(){
-                              dialactions.next = false;  
-                            }
-                        })
-                    }
-                }
-    			else
-    			{
-        			if (newleadid != 0) {sId = newleadid;}
-        			newleadid = 0;
-                    window.astatus = 'dialing';
-                    //hiderecordcontrol();
-        			submitter('submit', handleHttpResponse);
-    			}
+			var uId = '<?=$userid;?>';
+			if (dialmode == 'progressive' && sId == 0)
+				{
+                                if (dialactions.next == false)
+                                    {
+                                        dialactions.next = true;
+                                        $.ajax({
+                                        url: url + '?dialmode='+dialmode+'&uid=' + uId + '&act=next&lid=' + escape(sId),
+                                            success: function(resp){
+                                                dialactions.next = false;
+                                                window.astatus = 'dialing';
+                                                handleHttpResponse(resp);
+                                                //showrecordcontrol();
+                                            },
+                                            error: function(){
+                                              dialactions.next = false;  
+                                            }
+                                        })
+                                    }
+                                }
+			else
+			{
+			if (newleadid != 0) {sId = newleadid;}
+			newleadid = 0;
+                        window.astatus = 'dialing';
+                        //hiderecordcontrol();
+			submitter('submit', handleHttpResponse);
+			}
 			}
 		}
 function getHTTPObject() {
@@ -636,10 +604,8 @@ function getHTTPObject() {
   return xmlhttp;
 }
 function exitapp(resp) {
-   	cleanexit = true;
-	validNavigation = true;
-	console.log("exitapp() validNavigation: "+validNavigation);
-	setTimeout("window.location=('../index.php?act=logout&uid=<?=$userid;?>')",1000);	
+		   	cleanexit = true;
+			setTimeout("window.location=('../index.php?act=logout&uid=<?=$userid;?>')",1000);
 }
 function clearfields() {
 		jQuery("input[type=text]").val('');
@@ -815,15 +781,15 @@ function prevlead()
 	}
         }
 function createdateinput()
-    {
-    jQuery('#datetd').show();   jQuery('#dodisposeapplydate').hide();
+	{
+	jQuery('#datetd').show();
           $("#accordion").accordion("resize");
-    }
+	}
 function cleardateinput()
-    {
-    jQuery('#datetd').hide();   jQuery('#dodisposeapplydate').hide();
+	{
+	jQuery('#datetd').hide();
         $("#accordion").accordion("resize");
-    }
+	}
 function althangup()
 	{
             //stoprecording();
@@ -942,7 +908,7 @@ function cbdial(led)
                         dispose(cbdial,led);
 			}
         else {
-    if (astatus == 'paused' || astatus =='hanged' || astatus == 'preview' || astatus == 'cbview' || astatus == 'newlead')           
+	if (astatus == 'paused' || astatus =='hanged' || astatus == 'preview' || astatus == 'cbview')
 	{
 	//astatus = 'dialingcb';
 	var uId = '<?=$userid;?>';astatus = 'cbview';
@@ -963,36 +929,6 @@ function cbdial(led)
 	}
         }
 	}
-function qptdial(led) {
-    astatus = 'prevlead';
-    if (cbable) {
-        if (astatus == 'dialingcb') {
-            alert("Hangup the Call first!");
-        }
-        var thi = document.getElementById('disposition').selectedIndex;
-        var sId = document.getElementById('leadid').value;
-        if (thi == 0 && sId != 0 && astatus != 'cbview') {
-            var t = Ext.ComponentMgr.get("maintabpanel");
-            t.activate(0);
-            dispose(cbdial, led);
-        } else {
-            if (astatus == 'paused' || astatus == 'hanged' || astatus == 'preview' || astatus == 'cbview' || astatus == 'newlead' || astatus == 'prevlead') {
-                var uId = '<?=$userid;?>';
-                astatus = 'prevlead';
-                submitter("getsearchdetails&user=" + uId + "&leadid=" + led, function(resp) {
-                    enableb('dbb');
-                    showb('nbb');
-                    try {
-                        hideb('start');
-                    } catch (e) {}
-                    checkingnew = 21;
-                    Ext.getCmp('maintabpanel').activate(0);
-                    populate(resp);
-                });
-            }
-        }
-    }
-}
 function dialcb(pone)
 	{
 	var aphone =document.getElementById('phone').value;
@@ -1079,7 +1015,7 @@ function reloadscript()
             params: 'projid='+projid+'&leadid='+leadid, 
             scripts: true,
             callback: function(e){
-                $("input.fi").change(function(){
+                $("input.fi").blur(function(){
                     savescript($(this).attr("name"))
                 });
                 $("select.fi").change(function(){
@@ -1088,6 +1024,7 @@ function reloadscript()
                 jQuery("#scriptbod").accordion();
                 jQuery("#scriptbod").accordion("resize");
                 jQuery("#cinfo").accordion();
+                jQuery("#oinfo").accordion();
                 populatescript();
             }
         });
@@ -1106,30 +1043,6 @@ function savescript(field)
             }
         });
 	}
-function newnextpage(projectid,parentid,_cfname)
-{
-    /***************************/
-    /* ADDED BY Vincent Castro */
-    /***************************/
-    var script_form = $("#scriptbod").serializeArray();
-    var leadid = $("#leadid").val();
-    $("[name='"+_cfname+"']").val($("#scriptbod").find("[name='"+_cfname+"']").val());
-    $.ajax({
-        url: "script.php?act=getnextpage",
-        type:"POST",
-        success:function(resp){
-            $("#page"+parentid).append(resp);
-            jQuery("#scriptbod").accordion("resize");
-            // populatescript();
-        },
-        data: {
-            "leadid":leadid,
-            "parentid":parentid,
-            "projid":projectid,
-            "script":script_form
-        }
-    })
-}
 function nextpage(projectid,parentid)
 {
 	/***************************/
@@ -1266,8 +1179,22 @@ function warningmess(emessage)
         			}); 
 	}
 function inbrowser(nurl)
-{	
-	window.open(nurl);
+{
+	var win = new Ext.Window({
+            title    : 'BlueCloud Browser',
+			plain	:	true,
+			collapsible:true,
+            closable : true,
+            width    : 970,
+            height   : 500,
+            border : false,
+            plain    : true,
+            layout   : 'fit',
+			renderTo : 'container',
+			resizable : true,
+			html: '<iframe src="'+nurl+'" style="width:950px; height:498px; overflow:auto" frameborder="0"></iframe>'
+        });
+	win.show();
 }
 function dispose(cb,cbpar)
 {
@@ -1416,61 +1343,16 @@ function rejectinboundcall(callid)
             }
     });
 }
-function answerinboundcall(callid)
-{
-    // $("#dialogcontainer").dialog("close");
-    $.ajax({
-        url: 'ajax.php?act=answerinboundcall&callid='+callid,
-        success: function(resp){
-            if (resp != 'Pickup Failed')
-            {
-                inbound_uselead(resp);
-                // alert("Call Answered");
-            }
-            else
-            {
-                // alert(resp);
-                alert("Call was put back to queue.");
-                $("#dialogcontainer").dialog("close");
-            }
-        }
-    });
-}
 function newinboundcall()
 {
     var ld = document.getElementById('leadid').value;
     var dp = document.getElementById('disposition').selectedIndex;
-    var phone = document.getElementById('phone').value;
-    if (ld > 0 && dp == 0 && astatus != 'cbview' && phone != 'anonymous')
+    if (ld > 0 && dp == 0 && astatus != 'cbview')
 			{
 			dispose(newinboundcall);
 			}
     $.ajax({
         url: 'ajax.php?act=newinboundcall',
-        success: function(resp){
-            $("#dialogcontainer").html(resp);
-            $("#dialogcontainer").dialog({
-                title: 'New Inbound Call',
-                width: 400,
-                maxHeight: 400,
-                modal: true,
-                closeOnEscape: false,
-                open: function(event, ui) { $(".ui-dialog-titlebar-close", ui.dialog || ui).hide(); }
-            });
-        }
-    });
-}
-function newinboundcallmanual()
-{
-    var ld = document.getElementById('leadid').value;
-    var dp = document.getElementById('disposition').selectedIndex;
-    var phone = document.getElementById('phone').value;
-    if (ld > 0 && dp == 0 && astatus != 'cbview' && phone != 'anonymous')
-            {
-            dispose(newinboundcallmanual);
-            }
-    $.ajax({
-        url: 'ajax.php?act=newinboundcallmanual',
         success: function(resp){
             $("#dialogcontainer").html(resp);
             $("#dialogcontainer").dialog({
@@ -1571,13 +1453,10 @@ var chats = new Array();
 function converse(withuid,withname)
 {
     //startChatSession();
-    if (isChatEnabled)
-    {
-		 jQuery.ajax({
-	        url: "../messaging.php",
-	        success: dresponsehandler 
-	    });
-	}
+	 jQuery.ajax({
+        url: "../messaging.php",
+        success: dresponsehandler 
+    });
 }
 function loadchattab(s)
 {
@@ -1587,17 +1466,17 @@ function loadchattab(s)
 function refreshonlineusers()
 {
     var atab = Ext.getCmp('maintabpanel').getActiveTab();
-    if (atab.id=='chattab' && isChatEnabled)
-    {
-        jQuery.ajax({
-            url: "../messaging.php?act=refreshonline",
-            global: false,
-            success: function(resp){
-                $("#chatusers").html(resp);
-                //setTimeout("refreshonlineusers()",10000);
-            }
-        });
-    }
+    if (atab.id=='chattab')
+        {
+            jQuery.ajax({
+                url: "../messaging.php?act=refreshonline",
+                global: false,
+                success: function(resp){
+                    $("#chatusers").html(resp);
+                    //setTimeout("refreshonlineusers()",10000);
+                }
+            });
+        }
 }
 function freechat(i)
 {
@@ -1683,30 +1562,27 @@ navbar = new Ext.Toolbar({
 		});
 if (dialmode == 'progressive')
 {
-	navbar.addButton([
-		new Ext.Toolbar.MenuButton({id: 'nbb', text: 'NEXT', handler: subformvalues, cls:'x-btn-text-icon', icon: 'icons/arrow_right.png'}),
-		new Ext.Toolbar.MenuButton({text: 'PREVIEW NEXT', handler: prevlead, cls:'x-btn-text-icon', icon: 'icons/doc_page.png'}),
-		new Ext.Toolbar.MenuButton({text: 'DIAL', handler: dodial, cls:'x-btn-text-icon', icon: 'icons/dial.png', id: 'dbb', disabled:true}),
-		new Ext.Toolbar.MenuButton({id: 'hbb', text: 'END CALL', handler: hangup, cls:'x-btn-text-icon', icon: 'icons/disconnect.png', disabled:true}),
-		new Ext.Toolbar.MenuButton({text: 'NEW LEAD', handler: newlead2, cls:'x-btn-text-icon', icon: 'icons/add.png',id:'nlbutton'}),
-		new Ext.Toolbar.MenuButton({id: 'nottrackerEXIT', text: 'EXIT', handler: exitdial, cls:'x-btn-text-icon', icon: 'icons/cancel.png'})
+navbar.addButton([
+new Ext.Toolbar.MenuButton({id: 'nbb', text: 'NEXT', handler: subformvalues, cls:'x-btn-text-icon', icon: 'icons/arrow_right.png'}),
+new Ext.Toolbar.MenuButton({text: 'PREVIEW NEXT', handler: prevlead, cls:'x-btn-text-icon', icon: 'icons/doc_page.png'}),
+new Ext.Toolbar.MenuButton({text: 'DIAL', handler: dodial, cls:'x-btn-text-icon', icon: 'icons/dial.png', id: 'dbb', disabled:true}),
+new Ext.Toolbar.MenuButton({id: 'hbb', text: 'END CALL', handler: hangup, cls:'x-btn-text-icon', icon: 'icons/disconnect.png', disabled:true}),
+new Ext.Toolbar.MenuButton({text: 'NEW LEAD', handler: newlead2, cls:'x-btn-text-icon', icon: 'icons/add.png',id:'nlbutton'}),
+new Ext.Toolbar.MenuButton({text: 'EXIT', handler: exitdial, cls:'x-btn-text-icon', icon: 'icons/cancel.png'})
 	]);
 }
 if (dialmode == 'predictive' || dialmode == 'blended' || dialmode == 'inbound')
-{
+	{
 	navbar.addButton([
-		new Ext.Toolbar.MenuButton({text: 'START', handler: toggledial, cls:'x-btn-text-icon', icon: 'icons/accept.png', id: 'start'}),
-		new Ext.Toolbar.MenuButton({text: 'PAUSE', handler: toggledial, cls:'x-btn-text-icon', icon: 'icons/stop.png', id: 'pause', hidden: true}),
-		new Ext.Toolbar.MenuButton({text: 'NEXT', handler: subformvalues, cls:'x-btn-text-icon', icon: 'icons/arrow_right.png', hidden:true, id:'nbb'}),
-		new Ext.Toolbar.MenuButton({text: 'DIAL', handler: dodial, cls:'x-btn-text-icon', icon: 'icons/dial.png', id: 'dbb', disabled: true}),
-		new Ext.Toolbar.MenuButton({text: 'END CALL', handler: hangup, cls:'x-btn-text-icon', icon: 'icons/disconnect.png', id: 'hbb', disabled: true}),
-		new Ext.Toolbar.MenuButton({text: 'NEW LEAD', handler: newlead2, cls:'x-btn-text-icon', icon: 'icons/add.png', id: 'nlbutton'}),
-		new Ext.Toolbar.MenuButton({id: 'nottrackerEXIT', text: 'EXIT', handler: exitdial, cls:'x-btn-text-icon', icon: 'icons/cancel.png'})
+	new Ext.Toolbar.MenuButton({text: 'START', handler: toggledial, cls:'x-btn-text-icon', icon: 'icons/accept.png', id: 'start'}),
+	new Ext.Toolbar.MenuButton({text: 'PAUSE', handler: toggledial, cls:'x-btn-text-icon', icon: 'icons/stop.png', id: 'pause', hidden: true}),
+	new Ext.Toolbar.MenuButton({text: 'NEXT', handler: subformvalues, cls:'x-btn-text-icon', icon: 'icons/arrow_right.png', hidden:true, id:'nbb'}),
+	new Ext.Toolbar.MenuButton({text: 'DIAL', handler: dodial, cls:'x-btn-text-icon', icon: 'icons/dial.png', id: 'dbb', disabled: true}),
+	new Ext.Toolbar.MenuButton({text: 'END CALL', handler: hangup, cls:'x-btn-text-icon', icon: 'icons/disconnect.png', id: 'hbb', disabled: true}),
+	new Ext.Toolbar.MenuButton({text: 'NEW LEAD', handler: newlead2, cls:'x-btn-text-icon', icon: 'icons/add.png', id: 'nlbutton'}),
+	new Ext.Toolbar.MenuButton({text: 'EXIT', handler: exitdial, cls:'x-btn-text-icon', icon: 'icons/cancel.png'})
 	]);	
-}
-<?php 
-	include("timetracker/tteventspulldown-js.php");
-?>
+	}
 var mainpanel = new Ext.Panel({
 	applyTo: 'upper',
 	frame: true,
@@ -1747,6 +1623,7 @@ var tabs = new Ext.TabPanel({
                                 activate: function() {
                                     jQuery("#scriptbod").accordion("resize");
                                      jQuery("#cinfo").accordion("resize");
+                                     jQuery("#oinfo").accordion("resize");
                                 }
                             }
                         },
@@ -1774,10 +1651,6 @@ if (booking == 1)
 		var bcal = new Ext.Panel({title: 'Booking Calendar', html:'<iframe height="100%" width="100%" src="../modules/appbook.php?cid=<?=$clientid;?>" frameborder="0"></iframe>'});
 		tabs.add(bcal);
 	}
-<?php 
-	include("agentuisettings/uisetopts-js.php");
-?>
-// Ext.onReady(function()
 });
 var cbtab;
 function loadsimtab(s)
@@ -2013,29 +1886,24 @@ function switchproject() {
 	var sId = $("#leadid").val();
 	if (sId != 0 || sId != '')
 	{
-		var thi = document.getElementById('disposition').selectedIndex;
-		if (thi == 0 && sId !=0)
-		{
+	var thi = document.getElementById('disposition').selectedIndex;
+	if (thi == 0 && sId !=0)
+			{
 			dispose(switchproject);
-		}
-		else
-		{
+			}
+	else
+	{
             cleanexit = true;
-            validNavigation = true;
-			console.log("switchproject() validNavigation: "+validNavigation);
             $("#campswitcher").submit();
-		}
+	}
 	}
 	else {
             cleanexit = true;
-            validNavigation = true;
-			console.log("switchproject() validNavigation: "+validNavigation);
             $("#campswitcher").submit();
 	}
 }
 function changeproj() {
 	cleanexit = true;
-	validNavigation = true;
 	var spid = $("#selectprojectid").val();
 	var ext = $("#sextension").val();
 	var _userid_ = $("#selectprojectid").attr("title");
@@ -2046,7 +1914,6 @@ function changeproj() {
                     inb += '&inb[]='+$(this).val();
                 }
                 );
-	console.log("changeproj() validNavigation: "+validNavigation);
 	window.location="index.php?act=changeproj&projid="+spid+"&eyebeam="+ext+inb+"&_USERID_="+_userid_+"&_ACT_="+_act_;
 }
 var stct = 1;
@@ -2076,32 +1943,24 @@ function usecal()
 	$("#cslots").dialog("close");
 	createdateinput();
 }
-function doslots(ci) {
-    var mon = '';
-    $("#cslots").dialog({
-        minWidth: 850,
-        minHeight: 400
-    });
-    $('#month_view_calender').html("");
-    $.ajax({
-        url: "../modules-dev/appbookback.php?mon=" + mon + "&ci=" + ci + "&sid=" + Math.random(),
-        success: function(data) {
-            $("#month_view_calender").html(data);
-            $("#caltable").selectable({
-                filter: 'td.selectable',
-                stop: appselect
-            });
-        }
-    });
+function doslots()
+{
+        $.ajax({
+            url: 'ajax.php?act=cslots',
+            success: function(resp){
+                $("#cslots").html(resp);
+                $("#cslots").dialog({minWidth:614});
+                var dt = jQuery(".datatabs").dataTable();
+                dt.fnSort([[1,'asc']])
+            }
+        });
 }
-function popdate(dt, ci) {
-    $("#calendar").val(dt);
-    $("#slotdatecalendar").val(dt);
-    $("#slotidfrombookingcalendar").val(ci);
-    $("#calendar").show();
-    $("#slots").dialog("close");
-    $("#cslots").dialog("close");
-    createdateinput_();
+function popdate(dt,ci)
+{
+	$("#calendar").val(dt);
+	settheci(ci);
+	$("#calendar").show();
+        $("#cslots").dialog("close");
 }
 function indicator()
 {
@@ -2203,4 +2062,3 @@ function gettags(action)
     });
 }
 </script>
-<?php include ("timetracker/tteventspause-js.php") ?>

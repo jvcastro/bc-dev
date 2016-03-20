@@ -200,175 +200,207 @@ if ($act =='updatedispolist')
 		echo $disp;
 		exit();
 	}
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+if($act == 'getcustomdata'){
+    if ($_REQUEST['projectid']){
+        $render = rendercustomdata($_REQUEST['projectid']);
+    }
+    echo $render;
+    exit();
+}
 if ($act == 'export')
 {
     extract($_POST);
+    
+    /***************************/
+    /* ADDED BY Vincent Castro */
+    /***************************/
+    $vfs = $_REQUEST['viewfields'];
+    $customdataArray = arraycustomdata($_REQUEST['projectid']); /* ADDED BY Vincent Castro */
+    foreach ($viewfields as $key=>$vf) {
+        $viewfields[$key][1] = 0;
+    }
+    $viewfields = array_merge($viewfields,$customdataArray); /* ADDED BY Vincent Castro */
+    // print_r($viewfields);
+    foreach ($vfs as $vf) {
+        $viewfields[$vf][1] = 1;
+    }
+
     $_REQUEST['type'] = 'search';
     include "../export.php";
 }
-if ($act == 'search')
-	{
-		extract($_POST);
-                $vfs = $_REQUEST['viewfields'];
-                foreach ($viewfields as $key=>$vf)
+if ($act == 'search') {
+    extract($_POST);
+    $vfs = $_REQUEST['viewfields'];
+    $customdataArray = arraycustomdata($_REQUEST['projectid']); /* ADDED BY Vincent Castro */
+    foreach ($viewfields as $key=>$vf) {
+        $viewfields[$key][1] = 0;
+    }
+    $viewfields = array_merge($viewfields,$customdataArray); /* ADDED BY Vincent Castro */
+    // print_r($viewfields);
+    foreach ($vfs as $vf) {
+        $viewfields[$vf][1] = 1;
+    }
+    // array_merge($viewfields,$customdataArray);
+    // print_r($customdataArray);
+    // print_r($viewfields);
+    // exit();
+    //var_dump($_REQUEST);
+    //$projectid = $_REQUEST['projectid'];
+    $projects = projectlist($bcid);
+    if ($projectid == 'all') {
+        foreach ($projects as $project) {
+            $p[] = $project['id'];
+        }
+        $inpid = implode(",",$p);
+    } else $inpid = $projectid;
+
+    $recres = mysql_query("SELECT * from recordinglog where projectid in ($inpid)");
+    while($recrow = mysql_fetch_assoc($recres)) {
+        $rt = explode("_",$recrow['filename']);
+        $reclid = $rt[0];
+        // echo $reclid." ";
+        $recordinglog[$reclid] = $recordinglog[$reclid] ? $recordinglog[$reclid] + 1 : 1;
+        $recordingproject[$reclid] = $recrow['projectid'];
+    }
+
+    $results = listrecords($projectid,$disposition,$start,$end,$datetype);
+    if ($act != 'export') {
+        $headers['0'] = '<input type="checkbox" id="checkboxall" onclick="togglecheckbox()">';
+    }
+    $headers['00'] = 'Date';
+    $headers['1'] = 'QA Status';
+    $headers['2'] = 'Disposition';
+    $headers['3'] = 'Agent';
+    $headers['4'] = 'Phone';
+    $headers['4a'] = 'AltPhone';
+    $headers['4b'] = 'Mobile';
+    $headers['5'] = 'Name';
+    $headers['6'] = 'Company';
+    $headers['6a'] = 'Email';
+    $headers['6b'] = 'Address1';
+    $headers['6c'] = 'Address2';
+    $headers['7'] = 'Suburb';
+    $headers['7a'] = 'City';
+    $headers['8'] = 'Postcode';
+    $headers['9'] = 'State';
+    $headers['9a'] = 'Agent Comments';
+    $headers['9b'] = 'QA Comments';
+    $headers['10'] = 'Date set';
+    $rct = 0;
+    foreach ($results as $result) {
+        if ($act == 'export') {
+            $scriptres = mysql_query("SELECT scriptjson from scriptdata where leadid = '".$result['leadid']."'");
+            $scriptrow = mysql_fetch_array($scriptres);
+            $sdata = json_decode($scriptrow['scriptjson']);
+            foreach ($sdata as $key=>$value)
+            {
+                $scriptdata[$key][$result['leadid']] = $value;
+            }
+            /*$xml = $scriptrow['scriptxml'];
+            $raw = explode("</",$xml);
+            foreach ($raw as $d)
+            {
+            $st_label = strpos($d,"<") + 1;
+            $end_label = strpos($d,">",$st_label);
+            $len_label = strlen($d);
+            $label = substr($d,$st_label,$end_label - $st_label);
+            $scriptheads[$label] = $label;
+            $st_val = $end_label + 1;
+            $value = substr($d,$st_val);
+            $scriptdata[$label][$result['leadid']] = $value;
+            }
+            */
+        }
+        $rct++;
+    }
+    foreach ($results as $result) {
+
+        /***************************/
+        /* ADDED BY Vincent Castro */
+        /***************************/
+        $resultCustomFields = get_object_vars(json_decode($result['customfields']));
+        foreach ($customdataArray as $key => $value) {
+            $result[$key] = $resultCustomFields[$key];
+        }
+
+		if ($agentid != 'all' && $result['assigned'] != $agentid) {
+
+		} elseif ($act == 'export') {
+            $rows[$result['leadid']]['bulk'] ='<input type="checkbox" name="bulkaction" value="'.$result['leadid'].'">';
+            $rows[$result['leadid']]['date'] = date('Y-m-d H:i:s',$result['epoch_timeofcall']);
+            $rows[$result['leadid']]['status'] = '<span id="status'.$result['leadid'].'">'.ucfirst($result['status']).'</span>';
+            $rows[$result['leadid']]['dispo'] = $result['dispo'];
+            $rows[$result['leadid']]['agent'] = $agents[$result['assigned']];
+            $rows[$result['leadid']]['phone'] = $result['phone'];
+            $rows[$result['leadid']]['altphone'] = clearnum($result['altphone']);
+            $rows[$result['leadid']]['mobilephone'] = clearnum($result['mobile']);
+            $rows[$result['leadid']]['name'] = $result['cname'].$result['cfname']." ".$result['clname'];
+            $rows[$result['leadid']]['company'] = $result['company'];
+            $rows[$result['leadid']]['email'] = $result['email'];
+            $rows[$result['leadid']]['address1'] = $result['address1'];
+            $rows[$result['leadid']]['address2'] = $result['address2'];
+            $rows[$result['leadid']]['suburb'] = $result['suburb'];
+            $rows[$result['leadid']]['city'] = $result['suburb'];
+            $rows[$result['leadid']]['postcode'] = $result['zip'];
+            $rows[$result['leadid']]['state'] = $result['state'];
+            $rows[$result['leadid']]['comments'] = $result['comments'];
+            $rows[$result['leadid']]['resultcomments'] = $result['resultcomments'];
+            $rows[$result['leadid']]['dateset'] = $result['epoch_callable'] > 0 ? date('Y-m-d H:i:s',$result['epoch_callable']):'';
+            $rows[$result['leadid']]['options'] = 'title="'.$result['resultcomments'].'" onclick="getlead(\''.$result['leadid'].'\')"';
+            foreach ($scriptheads as $addhead){
+                $headers[$addhead] = $addhead;
+                $rows[$result['leadid']][$addhead] = $scriptdata[$addhead][$result['leadid']];
+            }
+        } else {
+            if (!empty($result['leadid'])) {
+
+                $rows[$result['leadid']]['bulk'] ='<input type="checkbox" name="bulkaction" value="'.$result['leadid'].'"> &nbsp;';
+                // $player_url = "http://116.93.124.48/audioplayer.php?projectid=". $recordingproject[$result['leadid']] ."&leadid=". $result['leadid'];
+                // $rows[$result['leadid']]['bulk'] .=$recordinglog[$result['leadid']] > 0 ? '<img src="../icons/recorded.png" title="Recorded" onclick=window.open("'. $player_url . '") />':'';
+                $_debug = sprintf("%s-%s-%s-%s\n", $recordingproject[$result['leadid']], $result['leadid'], $projects[$recordingproject[$result['leadid']]]['linkurl']);
+                if ($projects[$recordingproject[$result['leadid']]]['linkurl'] == '' || $projects[$recordingproject[$result['leadid']]]['linkurl'] == null)
+                $rows[$result['leadid']]['bulk'] .=$recordinglog[$result['leadid']] > 0 ? '<img src="../icons/recorded.png" title="Recorded (' . $_debug . ')" />':'';
+                else
+                $rows[$result['leadid']]['bulk'] .=$recordinglog[$result['leadid']] > 0 ? '<img src="../icons/recorded.png" title="Recorded" onclick="player_window('. $recordingproject[$result['leadid']] .' ,'. $result['leadid'] .' ,\'' . $projects[$recordingproject[$result['leadid']]]['linkurl'] . '\')" />':'';
+
+                $headers = array();
+                $headers[] = '<input type="checkbox" id="checkboxall" onclick="togglecheckbox()">';
+                foreach ($viewfields as $key=>$vals)
                 {
-                    $viewfields[$key][1] = 0;
-                }
-                foreach ($vfs as $vf)
-                {
-                    $viewfields[$vf][1] = 1;
-                }
-		//var_dump($_REQUEST);
-		//$projectid = $_REQUEST['projectid'];
-                $projects = projectlist($bcid);
-                if ($projectid == 'all')
-			{
-				foreach ($projects as $project)
-					{
-						$p[] = $project['id'];
-					}
-				$inpid = implode(",",$p);
-			}
-                else $inpid = $projectid;
-                $recres = mysql_query("SELECT * from recordinglog where projectid in ($inpid)");
-                while($recrow = mysql_fetch_assoc($recres))
-                {
-                    $rt = explode("_",$recrow['filename']);
-                    $reclid = $rt[0];
-                    $recordinglog[$reclid] = $recordinglog[$reclid] ? $recordinglog[$reclid] + 1:1;
-                    $recordingproject[$reclid] = $recrow['projectid'];
-                }
-		$results = listrecords($projectid,$disposition,$start,$end,$datetype);
-                if ($act != 'export')
-                {
-                    $headers['0'] = '<input type="checkbox" id="checkboxall" onclick="togglecheckbox()">';
-                }
-		$headers['00'] = 'Date';
-		$headers['1'] = 'QA Status';
-		$headers['2'] = 'Disposition';
-		$headers['3'] = 'Agent';
-		$headers['4'] = 'Phone';
-		$headers['4a'] = 'AltPhone';
-		$headers['4b'] = 'Mobile';
-		$headers['5'] = 'Name';
-		$headers['6'] = 'Company';
-                $headers['6a'] = 'Email';
-                    $headers['6b'] = 'Address1';
-                    $headers['6c'] = 'Address2';
-                    $headers['7'] = 'Suburb';
-                    $headers['7a'] = 'City';
-                    $headers['8'] = 'Postcode';
-                    $headers['9'] = 'State';
-                    $headers['9a'] = 'Agent Comments';
-                    $headers['9b'] = 'QA Comments';
-                    $headers['10'] = 'Date set';
-                $rct = 0;
-                foreach ($results as $result) 
-			{
-                            if ($act == 'export')
-                                    {
-                                        $scriptres = mysql_query("SELECT scriptjson from scriptdata where leadid = '".$result['leadid']."'");
-                                        $scriptrow = mysql_fetch_array($scriptres);
-                                        $sdata = json_decode($scriptrow['scriptjson']);
-                                        foreach ($sdata as $key=>$value)
-                                        {
-                                             $scriptdata[$key][$result['leadid']] = $value;
-                                        }
-                                        /*$xml = $scriptrow['scriptxml'];
-                                        $raw = explode("</",$xml);
-                                        foreach ($raw as $d)
-                                            {
-                                                $st_label = strpos($d,"<") + 1;
-                                                $end_label = strpos($d,">",$st_label);
-                                                $len_label = strlen($d);
-                                                $label = substr($d,$st_label,$end_label - $st_label);
-                                                $scriptheads[$label] = $label;
-                                                $st_val = $end_label + 1;
-                                                $value = substr($d,$st_val);
-                                                $scriptdata[$label][$result['leadid']] = $value;
-                                               }
-                                               */
-                                    }
-                              $rct++;
+                    if ($vals[1] > 0) {
+                        $headers[$key] = $vals[0];
+                        if ($key == 'assigned') {
+                            $aval =  $result['assigned'] > 0 ? $agents[$result['assigned']]:'';
+                        } elseif ($key == 'epoch_timeofcall' || $key == 'epoch_callable') { 
+                            $aval = $result[$key] > 0 ? date('Y-m-d H:i:s',$result[$key]):'';
+                        } else { 
+                            $aval = $result[$key]; 
                         }
-		foreach ($results as $result) 
-			{
-				if ($agentid != 'all' && $result['assigned'] != $agentid)
-					{
-					}
-				elseif ($act == 'export')
-				{
-		$rows[$result['leadid']]['bulk'] ='<input type="checkbox" name="bulkaction" value="'.$result['leadid'].'">';
-				$rows[$result['leadid']]['date'] = date('Y-m-d H:i:s',$result['epoch_timeofcall']);
-		$rows[$result['leadid']]['status'] = '<span id="status'.$result['leadid'].'">'.ucfirst($result['status']).'</span>';
-				$rows[$result['leadid']]['dispo'] = $result['dispo'];
-				$rows[$result['leadid']]['agent'] = $agents[$result['assigned']];
-				$rows[$result['leadid']]['phone'] = $result['phone'];
-				$rows[$result['leadid']]['altphone'] = clearnum($result['altphone']);
-				$rows[$result['leadid']]['mobilephone'] = clearnum($result['mobile']);
-				$rows[$result['leadid']]['name'] = $result['cname'].$result['cfname']." ".$result['clname'];
-				$rows[$result['leadid']]['company'] = $result['company'];
-                                $rows[$result['leadid']]['email'] = $result['email'];
-                                $rows[$result['leadid']]['address1'] = $result['address1'];
-                                $rows[$result['leadid']]['address2'] = $result['address2'];
-                                $rows[$result['leadid']]['suburb'] = $result['suburb'];
-                                $rows[$result['leadid']]['city'] = $result['suburb'];
-                                $rows[$result['leadid']]['postcode'] = $result['zip'];
-                                $rows[$result['leadid']]['state'] = $result['state'];
-                                $rows[$result['leadid']]['comments'] = $result['comments'];
-                                $rows[$result['leadid']]['resultcomments'] = $result['resultcomments'];
-                             $rows[$result['leadid']]['dateset'] = $result['epoch_callable'] > 0 ? date('Y-m-d H:i:s',$result['epoch_callable']):'';
-                             $rows[$result['leadid']]['options'] = 'title="'.$result['resultcomments'].'" onclick="getlead(\''.$result['leadid'].'\')"';
-				foreach ($scriptheads as $addhead)
-                                    {
-                                        $headers[$addhead] = $addhead;
-                                        $rows[$result['leadid']][$addhead] = $scriptdata[$addhead][$result['leadid']];
-                                    }
-                                }
-                                else {
-                                    $rows[$result['leadid']]['bulk'] ='<input type="checkbox" name="bulkaction" value="'.$result['leadid'].'"> &nbsp;';
-                                    // $player_url = "http://116.93.124.48/audioplayer.php?projectid=". $recordingproject[$result['leadid']] ."&leadid=". $result['leadid'];
-                                    // $rows[$result['leadid']]['bulk'] .=$recordinglog[$result['leadid']] > 0 ? '<img src="../icons/recorded.png" title="Recorded" onclick=window.open("'. $player_url . '") />':'';
-                                    $_debug = sprintf("%s-%s-%s-%s\n", $recordingproject[$result['leadid']], $result['leadid'], $projects[$recordingproject[$result['leadid']]]['linkurl']);
-                                    if ($projects[$recordingproject[$result['leadid']]]['linkurl'] == '' || $projects[$recordingproject[$result['leadid']]]['linkurl'] == null)
-                                        $rows[$result['leadid']]['bulk'] .=$recordinglog[$result['leadid']] > 0 ? '<img src="../icons/recorded.png" title="Recorded (' . $_debug . ')" />':'';
-                                    else
-                                        $rows[$result['leadid']]['bulk'] .=$recordinglog[$result['leadid']] > 0 ? '<img src="../icons/recorded.png" title="Recorded" onclick="player_window('. $recordingproject[$result['leadid']] .' ,'. $result['leadid'] .' ,\'' . $projects[$recordingproject[$result['leadid']]]['linkurl'] . '\')" />':'';
-                                    $headers = array();
-                                    $headers[] = '<input type="checkbox" id="checkboxall" onclick="togglecheckbox()">';
-                                    foreach ($viewfields as $key=>$vals)
-                                    {
-                                        if ($vals[1] > 0)
-                                        {
-                                        $headers[$key] = $vals[0];
-                                        if ($key == 'assigned') {
-                                            $aval =  $result['assigned'] > 0 ? $agents[$result['assigned']]:'';
-                                            }
-                                        elseif ($key == 'epoch_timeofcall' || $key == 'epoch_callable'){ 
-                                            $aval = $result[$key] > 0 ? date('Y-m-d H:i:s',$result[$key]):'';
-                                        }
-                                        else $aval = $result[$key];
-                                        $rows[$result['leadid']][$key] = $aval;
-                                        }
-                                    }
-                                    $rows[$result['leadid']]['options'] = 'title="'.$result['resultcomments'].'" onclick="getlead(\''.$result['leadid'].'\')"';
-      $rows[$result['leadid']]['actions'] = 
-                                    '<a href="#" onclick="lastrecording(\''.$result['leadid'].'\')" title="Play Recording" style="display:none"><img src="../icons/recorded.png" /></a>
-                                    <a href="#" onclick="qacall(\''.$result['leadid'].'\',event)" title="Call" ><img src="../icons/dial.png" /></a>
-                                    <a href="#" onclick="qamail(\''.$result['leadid'].'\',event)" title="Email to Client"><img src="../icons/mail.png" /></a>   
-';
-                                }
-			}
-		if ($act == 'export')
-			{
-				$table = tablegen($headers,$rows,"930");
-				createdoc('excel',$table,true);
-			}
-		else {
-                    $headers['actions'] = 'Action';
-		$dcont = '<div id="searchresults">'.tablegen($headers,$rows,"100%").'</div>';
-		}
+                        $rows[$result['leadid']][$key] = $aval;
+                    }
+                }
+                $rows[$result['leadid']]['options'] = 'title="'.$result['resultcomments'].'" onclick="getlead(\''.$result['leadid'].'\')"';
+                $rows[$result['leadid']]['actions'] = 
+                '<a href="#" onclick="lastrecording(\''.$result['leadid'].'\')" title="Play Recording" style="display:none"><img src="../icons/recorded.png" /></a>
+                <a href="#" onclick="qacall(\''.$result['leadid'].'\',event)" title="Call" ><img src="../icons/dial.png" /></a>
+                <a href="#" onclick="qamail(\''.$result['leadid'].'\',event)" title="Email to Client"><img src="../icons/mail.png" /></a>   
+                ';
+
+        }
+
+        }
 	}
+    if ($act == 'export') {
+        $table = tablegen($headers,$rows,"930");
+        createdoc('excel',$table,true);
+    } else {
+        $headers['actions'] = 'Action';
+        $dcont = '<div id="searchresults">'.tablegen($headers,$rows,"100%").'</div>';
+    }
+}
 if ($act == 'emailtoclient')
 {
     $body = $_POST['htmlbody'];
@@ -400,6 +432,7 @@ if ($act == 'getlead' || $act == 'emailtoclient')
 		$lead = $record['info'];
                 $prefix = $lead['projectid']."/".$lead['leadid'];
                 $contents = $s3->getBucket($s3bucket,$prefix);
+                // print_r($contents);
 		$clientidres = mysql_query("SELECT clientid from projects where projectid = '".$lead['projectid']."' ");
 		$clientidrow = mysql_fetch_assoc($clientidres);
 		$clientid = $clientidrow['clientid'];
@@ -422,34 +455,38 @@ if ($act == 'getlead' || $act == 'emailtoclient')
         $apptarget_appointment = $client_contact_slots_row['apptarget'];
 		$audio = $contents;
 		$d = dispolist($lead['projectid']);
+            /***************************/
+            /* ADDED BY Vincent Castro */
+            /***************************/
+            /* ADDED DATA-CATEGORY */
                 foreach ($d as $disp)
                 {
                     if ($disp['statustype'] == 'dateandtime' || $disp['statustype'] == 'transferdateandtime')
                             {
-                                    $dispodrop .="<option onclick=\"createdateinput()\">";
+                                    $dispodrop .="<option onclick=\"createdateinput()\" data-category=\"".$disp['category']."\">";
                                     $dispodrop .=$disp['statusname'];
                                     $dispodrop .="</option>";
                             }
                     elseif ($disp['statustype'] == 'booking')
                                             {
-                                    $dispodrop .="<option onclick=\"doslots('".$lead['leadid']."','$clientid')\">";
+                                    $dispodrop .="<option onclick=\"doslots('".$lead['leadid']."','$clientid')\" data-category=\"".$disp['category']."\">";
                                     $dispodrop .=$disp['statusname'];
                                     $dispodrop .="</option>";
                                             }
                     elseif ($disp['statustype'] == 'link')
                             {
-                            $dispodrop .="<option onclick=\"showupdatepage('".$disp['statusid']."')\">";
+                            $dispodrop .="<option onclick=\"showupdatepage('".$disp['statusid']."')\" data-category=\"".$disp['category']."\">";
                             $dispodrop .=$disp['statusname'];
                             $dispodrop .="</option>";
                             }
                     elseif ($disp['statustype'] == 'transfer')
                             {
-                            $dispodrop .="<option onclick=\"cleardateinput()\">";
+                            $dispodrop .="<option onclick=\"cleardateinput()\" data-category=\"".$disp['category']."\">";
                             $dispodrop .=$disp['statusname'];
                             $dispodrop .="</option>";
                             }
                     elseif ($disp['statusname'] != 'all') {
-                            $dispodrop .="<option onclick=\"cleardateinput();\">";
+                            $dispodrop .="<option onclick=\"cleardateinput();\" data-category=\"".$disp['category']."\">";
                             $dispodrop .=$disp['statusname'];
                             $dispodrop .="</option>";
                     }
@@ -497,7 +534,7 @@ if ($act == 'getlead' || $act == 'emailtoclient')
         <hr>
         <br>
         <table width="800" cellspacing="5">
-        <tr><td colspan="4" class="tableheader">Custom Data</td></tr>
+        <tr><td colspan="4" class="tableheader">Custom Fields Data</td></tr>
          <?php
         //var_dump($record);
 		if (is_array($cfdata))
@@ -510,22 +547,22 @@ if ($act == 'getlead' || $act == 'emailtoclient')
 		}
 		?>
         </table>
-        <br>
+        <!-- <br>
         <hr>
         <br>
         <table width="800" cellspacing="5">
-        <tr><td colspan="4" class="tableheader">Script Captured Data</td></tr>
+        <tr><td colspan="4" class="tableheader">Script Captured Data</td></tr> -->
          <?php
-		if (is_array($cdata))
-		{
-		foreach ($cdata as $key=>$value)
-			{
-				echo '<tr><td colspan="2">'.ucfirst(str_replace("_"," ",$key)).'</td><td>
-                                    <input type="text" class="qasf" value="'.$value.'" name="'.$key.'"></td></tr>';
-			}
-		}
+		// if (is_array($cdata))
+		// {
+		// foreach ($cdata as $key=>$value)
+		// 	{
+		// 		echo '<tr><td colspan="2">'.ucfirst(str_replace("_"," ",$key)).'</td><td>
+  //                                   <input type="text" class="qasf" value="'.$value.'" name="'.$key.'"></td></tr>';
+		// 	}
+		// }
 		?>
-        </table>
+        <!-- </table> -->
         <br>
         <hr>
         <?php
@@ -582,9 +619,16 @@ if ($act == 'getlead' || $act == 'emailtoclient')
                 }
 		?>
         <br>
+        <input type="hidden" name="projectid" value="<?=$lead['projectid'];?>"/>
+        <input type="hidden" name="assigned" id="assignedid" value="<?=$lead['assigned'];?>"/>
         <table width="800" cellspacing="5">
-        <tr><td colspan="4" class="tableheader">Results and Notes</td></tr>
-        <tr><td colspan="2">Agent: </td><td><input type="hidden" name="projectid" value="<?=$lead['projectid'];?>"/><input type="hidden" name="assigned" value="<?=$lead['assigned'];?>"/><?=$agents[$lead['assigned']];?></td></tr>
+        <tr id="tableheader"><td colspan="4" class="tableheader">Results and Notes</td></tr>
+        <tr id="oldagent">
+            <td colspan="2">Agent: </td>
+            <td>
+                <?=$agents[$lead['assigned']];?>
+            </td>
+        </tr>
         <?php if (!isset($_REQUEST['export']) && $act != 'emailtoclient')
         {
             ?>
@@ -592,8 +636,15 @@ if ($act == 'getlead' || $act == 'emailtoclient')
         <?php
         }
         ?>
-        <tr><td colspan="2">Disposition:</td><td><select name="dispo"><option value="<?=$lead['dispo'];?>"><?=ucfirst($lead['dispo']);?></option><?=$dispdrop;?>
-        </select></td></tr>
+        <tr id="disposition">
+            <td colspan="2">Disposition:</td>
+            <td>
+                <select name="dispo" onchange="disposelect(this)">
+                    <option value="<?=$lead['dispo'];?>"><?=ucfirst($lead['dispo']);?></option> 
+                    <?=$dispdrop;?>
+                </select>
+            </td>
+        </tr>
         <?
 		if(strlen($appdate) > 1)
 		{
@@ -647,3 +698,69 @@ if ($act == 'getlead' || $act == 'emailtoclient')
 		}
 		exit();
 	}
+    /***************************/
+    /* ADDED BY Vincent Castro */
+    /***************************/
+    if($act == 'showagents'){
+        $pid = $_REQUEST['projectid'];
+        $bcid = getbcidbypid($pid);
+        $getAgents = getagentids($bcid);
+        $assigned = $_REQUEST['assigned'];
+        ?>
+        <tr id="reassign_agent">
+            <td colspan="2">Agent:</td>
+            <td>
+                <select name="assigned" id="reassign_agent_select">
+                    <?php 
+                        foreach($getAgents as $key){ 
+                            /** ACTIVE AGENTS ONLY **/
+                            if ($key['roleid'] == 3 && $key['active'] == 1) {
+                    ?>
+                                <option value="<?=$key['userid']?>" <?=($assigned == $key['userid'] ? "selected" : "")?> > <?=$agents[$key['userid']]?> </option>
+                    <?php 
+                            }
+                        } 
+                    ?>
+                </select>
+            </td>
+        </tr>
+        <?php
+        exit();
+    }
+    /***************************/
+    /* ADDED BY Vincent Castro */
+    /***************************/
+    if($act == 'showagentsbulk'){
+        $pid = $_REQUEST['projectid'];
+        $bcid = getbcidbypid($pid);
+        $getAgents = getagentids($bcid);
+        ?>
+        <label> Agent: </label>
+        <select name="assigned" onchange="bulktransfercallback(this)">
+            <?php 
+                foreach($getAgents as $key){ 
+                    /** ACTIVE AGENTS ONLY **/
+                    if ($key['roleid'] == 3 && $key['active'] == 1) {
+            ?>
+                        <option value="<?=$key['userid']?>" > <?=$agents[$key['userid']]?> </option>
+            <?php 
+                    }
+                } 
+            ?>
+        </select>
+        <?php
+        exit();
+    }
+    /***************************/
+    /* ADDED BY Vincent Castro */
+    /***************************/
+    if ($act == 'transferagentsbulk') {
+
+        $dib = $_REQUEST['leadid'];
+        $agentid = $_REQUEST['agentid'];
+
+        foreach ($dib as $key => $value) {
+            mysql_query("update leads_done set assigned = $agentid, dispo = 'ScheduledCallback' where leadid = $value");
+        }
+        exit();
+    }

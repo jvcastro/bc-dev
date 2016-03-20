@@ -47,7 +47,7 @@ if(isset($_POST['deactivate'])){
 	echo json_encode(array('count' => $return));
 	exit();
 }
-if(isset($_POST['setlistDeleted'])){	
+if(isset($_POST['setlistDeleted'])){
 	$thequery = "Update lists SET is_deleted = 1, active = 0 WHERE lid = ".$_POST['id'];
 	$resultOO = mysql_query($thequery);
 	$return = mysql_affected_rows();
@@ -86,8 +86,33 @@ if ($act == 'updateprovider')
     }
     exit;
 }
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+
+if ($act == 'savecf')
+{
+    $fn = $_REQUEST['fieldname'];
+    // print_r($fn);
+   $res = mysql_query("SELECT * from projects where projectid = '".$_REQUEST['projectid']."'");
+   $row = mysql_fetch_assoc($res);
+    $cf = json_decode($row['customfields'], true);
+    foreach ($fn as $key => $value) {
+    	$cfnew[$value['name']] = $value['value'];
+    }
+    foreach ($cf as $key => $value)
+    {
+        $cf[$key] = $cfnew[$key];
+    }
+    mysql_query("update projects set customfields = '".  mysql_real_escape_string(json_encode($cf))."' where projectid = '".$_REQUEST['projectid']."'");
+    exit;
+}
+
 if ($act == 'sortcf')
 {
+	/***************************/
+	/* MODIFIED BY Vincent Castro */
+	/***************************/
 	/* VALUES SORTED */
 	$arr = $_POST['custfield'];
 	/* TO BE SORTED */
@@ -231,15 +256,15 @@ if ($act == 'saveprofile')
 	{
 		$p = $_REQUEST['pass'];
 		$e = $_REQUEST['email'];
-        $tz = $_REQUEST['timezone'];
-        $_SESSION['timezone'] = $tz;
-		mysql_query("UPDATE members set userpass= '".mysql_real_escape_string($p)."', email = '".mysql_real_escape_string($e)."', timezone = '".  mysql_real_escape_string($tz)."' where userid = '".$_SESSION['auth']."'");                		
+                $tz = $_REQUEST['timezone'];
+                $_SESSION['timezone'] = $tz;
+		mysql_query("UPDATE members set userpass= '".mysql_real_escape_string($p)."', email = '".mysql_real_escape_string($e)."', timezone = '".  mysql_real_escape_string($tz)."' where userid = '".$_SESSION['auth']."'");
 		$_SESSION['email'] = $e;
 		$res = mysql_query("SELECT * from members where userid = '".$_SESSION['auth']."'");
 		$row = mysql_fetch_assoc($res);
 		$_SESSION['support'] = getaticketid($e);
 		?>
-        <p style="color:#F00">Details Updated!</p>        
+        <p style="color:#F00">Details Updated!</p>
         <?
         $act = 'profile';
 	}
@@ -454,6 +479,16 @@ if ($act == 'updatecustom')
 if ($act == 'addcontact')
 	{
 		extract($_REQUEST);
+
+		/* ADDED BY Vincent Castro */
+		$check = mysql_query("SELECT * FROM members WHERE userlogin = '".mysql_real_escape_string($userlogin)."'");
+		$countcheck = mysql_num_rows($check);
+		if($countcheck){
+			echo "Login already exist!";
+			exit;
+		}
+		/* ADDED BY Vincent Castro */
+
 		mysql_query("Insert into members set userlogin = '".mysql_real_escape_string($userlogin)."', userpass= '".mysql_real_escape_string($userpass)."', usertype = '$cusermode', bcid = '$bcid'");
 		$newuid = mysql_insert_id();
 		mysql_query("insert into client_contacts set clientid = $clientid, userid = '$newuid', firstname = '".mysql_real_escape_string($firstname)."', lastname = '".mysql_real_escape_string($lastname)."', phone = '$phone', email = '".mysql_real_escape_string($email)."', bcid = '$bcid'");
@@ -1521,28 +1556,7 @@ if ($act == 'addfilter')
 			$inval = implode(",",$val2);
 			$fdata = $field." ".$operand." (".$inval.")";
 		}
-	elseif ($operand == 'like') {
-		$fdata = $field." ".$operand." '%".$val."%'";
-	}
-	elseif ($operand == 'not like') {
-		$fdata = $field." ".$operand." '%".$val."%'";
-	}
-	elseif ($operand == 'startlike') {
-		$fdata = $field." ". "like" . " '" .$val."%'";
-	}
-	elseif ($operand == 'not startlike') {
-		$fdata = $field." ". "not like" . " '" .$val."'%'";
-	}
-	elseif ($operand == 'endlike') {
-		$fdata = $field." ". "like" . " '%" .$val."'";
-	}
-	elseif ($operand == 'not endlike') {
-		$fdata = $field." ". "not like" . " '%" .$val."'";
-	}
-	else 
-	{
-		$fdata = $field." ".$operand." '".$val."'";
-	}
+	else $fdata = $field." ".$operand." '".$val."'";
 	$q = "insert into filters set projectid = '$pid', filterdata = \"".mysql_real_escape_string($fdata)."\"";
 	mysql_query($q);
 	echo $q;
@@ -1579,11 +1593,21 @@ if ($act == 'managecamp')
         {
             $cflist = '';
             $dct = 0;
+            /***************************/
+			/* MODIFIED BY Vincent Castro */
+			/***************************/
             foreach ($cf as $key=>$value)
             {
                 $trclass = ($dct % 2) == 0 ? 'tableitem_':'tableitem';
-                $cflist .= '<tr class="'.$trclass.'" id="custfield_'.md5($key).'"><td class="dataleft fieldname">'.$key.'</td><td >'.$value.'</td>
-                    <td><a href="#" onclick="delcf(\''.$projid.'\',\''. addcslashes(htmlspecialchars($key),"'").'\')">Remove</a></td></tr>';
+                $cflist .= '<tr class="'.$trclass.'" id="custfield_'.md5($key).'">';
+                $cflist .= '<td class="dataleft fieldname">'.$key.'</td>';
+                $cflist .= '<td class="cf-label" id="cf-label-'.$key.'">'.$value.'</td>';
+                $cflist .= '<td class="cf-label-editable" id="cf-label-editable-'.$key.'" style="display:none;"><input type="text" value="'.$value.'" name="'.$key.'"> <a href="#" id="cf-save" onclick="savecf(\''.$projid.'\',\''. addcslashes(htmlspecialchars($key),"'").'\')"> Save </a></td>';
+                $cflist .= '<td>';
+                $cflist .= '<a href="#" class="cf-cancel" id="cf-cancel-'.$key.'" style="display:none;" onclick="cancelcf(\''.$key.'\')"> Cancel </a>';
+                $cflist .= '<a href="#" class="cf-edit" id="cf-edit-'.$key.'" onclick="editcf(\''.$key.'\')"> Edit </a> | ';
+                $cflist .= '<a href="#" onclick="delcf(\''.$projid.'\',\''. addcslashes(htmlspecialchars($key),"'").'\')"> Remove </a></td>';
+                $cflist .= '</tr>';
                 $dct++;
             }
         }
@@ -1767,7 +1791,6 @@ if ($act == 'managecamp')
                                                 }
                                                  $rows[10][1] = 'Answering Machine Detection';
                                                 $rows[10][2] = '<select id="amd'.$projrow['projectid'].'"  onchange="mc_update(\'amd\',\''.$projrow['projectid'].'\')">'.$amdsel.'</select>';
-include("timetracker_management/ttEventsOptShowSelect.php");
                                                $headers[] = 'Option';
                                                 $headers[] = 'Value';
                                                 echo tablegen($headers,$rows,'100%');
@@ -1790,8 +1813,6 @@ include("timetracker_management/ttEventsOptShowSelect.php");
                                                 //$rows[4][2] = ' <input type="text" value="'.$projrow['prefix'].'" onblur="mc_update(\'prefix\',\''.$projrow['projectid'].'\')" id="prefix'.$projrow['projectid'].'" />';
                                                  echo tablegen($headers,$rows,'100%');
                                         }
-include("agentinterface_management/agentuisettings.php");
-include("queuepreview/admin-managecamp-include.php");
                                                 ?>
                 </div>
                 <div id="tableCampaignDisposition"  class="campsection" style="display:none;">
@@ -1819,11 +1840,12 @@ include("queuepreview/admin-managecamp-include.php");
                 <div id="tableCustomFields"  class="campsection" style="display:none;">
                     <h3>Custom Fields</h3>
                     <input type="button" onclick="newcf('<?=$projid;?>')" value="New Custom Field"/>
+                    <form id="cf-form">
                         <table id="customfieldstable" style="width:100%;">
                         	<thead>
 	                            <tr>
 	                                <th class="tableheader" style="width:30%">Field Name</th>
-	                                <th class="tableheader">Label</th>
+	                                <th class="tableheader" style="width:50%">Label</th>
 	                                <th class="tableheader">Action</th>
 	                            </tr>
                         	</thead>
@@ -1835,6 +1857,7 @@ include("queuepreview/admin-managecamp-include.php");
                                 ?>
                         	</tbody>
                         </table>
+                    </form>
                 </div>
                 <div id="tableEmail"  class="campsection" style="display:none;">
                     <input type="button" onclick="emailtemplate('<?=$projid;?>',0)" value="New Email Template" />
@@ -1899,124 +1922,73 @@ include("queuepreview/admin-managecamp-include.php");
                 $fldct = mysql_num_fields($fldres);
                 $y = 0;
                 while ($y < $fldct)
-                {
-	                $fld = mysql_field_name($fldres, $y);
-	                if ($fld == 'zip')
-	                {
-		                $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">Postcode</option>';
-	                }
-	                elseif ($fld == 'cname')
-	                {
-	    	            $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">Name</option>';
-	                }
-	                elseif ($fld == 'cfname')
-	                {
-	        	        $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">FirstName</option>';
-	                }
-	                elseif ($fld == 'clname')
-	                {
-	            	    $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">SurName</option>';
-	                }
-	                elseif ($fld == 'dispo')
-	                {
-	                	$fldlist .= '<option value="'.$fld.'" onclick="popdispo(\''.$projid.'\')">Disposition</option>';
-	                }
-	                else {
-	                	$fldlist .= '<option value="'.$fld.'" onclick="nodrop()">'.ucfirst($fld).'</option>';
-	                }
-	                $y++;
-                }
+                                {
+                                $fld = mysql_field_name($fldres, $y);
+                                if ($fld == 'zip')
+                                {
+                                $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">Postcode</option>';
+                                }
+                                elseif ($fld == 'cname')
+                                {
+                                $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">Name</option>';
+                                }
+                                elseif ($fld == 'cfname')
+                                {
+                                $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">FirstName</option>';
+                                }
+                                elseif ($fld == 'clname')
+                                {
+                                $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">SurName</option>';
+                                }
+                                elseif ($fld == 'dispo')
+                                {
+                                $fldlist .= '<option value="'.$fld.'" onclick="popdispo(\''.$projid.'\')">Disposition</option>';
+                                }
+                                else {
+                                $fldlist .= '<option value="'.$fld.'" onclick="nodrop()">'.ucfirst($fld).'</option>';
+                                }
+                                $y++;
+                                }
                 $filres = mysql_query("select * from filters where projectid = '$projid'");
                 $dct =0;
                 while ($filrow = mysql_fetch_array($filres))
-				{
-                    $trclass = ($dct % 2) == 0 ? 'tableitem_':'tableitem';
-                    $fdata = $filrow['filterdata'];
-                    $filter = explode(" ",$fdata);
-                    switch ($filter[1])
                     {
-                		case "like":
-                			if (preg_match("/^'%(.*)%'$/", $filter[2]))
-                			{
-                				$nom = 'contains ';
-                			}
-                			elseif (preg_match("/(.*)%'$/", $filter[2])) {
-                				$nom = 'starts with ';
-                			}
-                			elseif (preg_match("/^'%(.*)/", $filter[2])) {
-                				$nom = 'ends with ';
-                			}
-                			preg_match("/'.*'/", $fdata, $matches);
-                			$filter[2] = $matches[0];
-                			$filter[2] = preg_replace('/%/', '', $filter[2]);
-                			break;
-                        case "=":
-                            $nom = 'equal to ';
-		        			preg_match("/'.*'/", $fdata, $matches);
-		        			$filter[2] = $matches[0];
-                            break;
-                        case "!=":
-                            $nom = 'not equal to ';
-                			preg_match("/'.*'/", $fdata, $matches);
-                			$filter[2] = $matches[0];
-                            break;
-                        case ">":
-                            $nom = 'greater than ';
-                			preg_match("/'.*'/", $fdata, $matches);
-                			$filter[2] = $matches[0];
-                            break;
-                        case "<":
-                            $nom = 'less than ';
-                			preg_match("/'.*'/", $fdata, $matches);
-                			$filter[2] = $matches[0];
-                            break;
-                        case "in":
-                            $nom = 'listed in ';
-                			preg_match("/\(.*\)/", $fdata, $matches);
-                			$filter[2] = $matches[0];
-                            break;
-                        case 'not':
-                        	switch ($filter[2]) {
-                        		case 'in':
-	                                $nom = 'not listed in ';
-				        			preg_match("/\(.*\)/", $fdata, $matches);
-				        			$filter[2] = $matches[0];
-                        			break;
-                        		case 'like':
-		                			if (preg_match("/^'%(.*)%'$/", $filter[3]))
-		                			{
-		                				$nom = 'not contain ';
-		                			}
-		                			elseif (preg_match("/(.*)%'$/", $filter[3])) {
-		                				$nom = 'not start with ';
-		                			}
-		                			elseif (preg_match("/^'%(.*)/", $filter[3])) {
-		                				$nom = 'not end with ';
-		                			}
-			            			preg_match("/'.*'/", $fdata, $matches);
-			            			$filter[2] = $matches[0];
-		                			$filter[2] = preg_replace('/%/', '', $filter[2]);
-                        			break;
-                        	}
-                            break;
-                    }
-                    echo '<tr class="'.$trclass.'"><td class="dataleft" style="width:30%">'.$filter[0].'</td><td class="dataleft">'.$nom.$filter[2].'</td><td class="dataleft"><div onclick="deletefilter(\''.$filrow['filterid'].'\',\''.$projid.'\')"><img src="icons/delete.gif"></div></td></tr>';
-                    $dct++;
-				}
+                    $trclass = ($dct % 2) == 0 ? 'tableitem_':'tableitem';
+                        $fdata = $filrow['filterdata'];
+                        $filter = explode(" ",$fdata);
+                        switch ($filter[1])
+                        {
+                                case "=":
+                                        $nom = 'is equal to ';
+                                        break;
+                                case "!=":
+                                        $nom = 'is not equal to ';
+                                        break;
+                                case ">":
+                                        $nom = 'is greater than ';
+                                        break;
+                                case "<":
+                                        $nom = 'is less than ';
+                                        break;
+                                case "in":
+                                        $nom = 'is in ';
+                                        break;
+                                case 'not':
+                                        $nom = 'is not in ';
+                                        $filter[2] = $filter[3];
+                                        break;
+                        }
+                        echo '<tr class="'.$trclass.'"><td class="dataleft" style="width:30%">'.$filter[0].'</td><td class="dataleft">'.$nom.$filter[2].'</td><td class="dataleft"><div onclick="deletefilter(\''.$filrow['filterid'].'\',\''.$projid.'\')"><img src="icons/delete.gif"></div></td></tr>';
+                        $dct++;
+                        }
                 $trclass = ($dct % 2) == 0 ? 'tableitem_':'tableitem';
                 $operand = '
-                <option value="'.urlencode('like').'">contains</option>
-                <option value="'.urlencode('startlike').'">starts with</option>
-                <option value="'.urlencode('endlike').'">ends with</option>
-                <option value="'.urlencode('<').'">less than</option>
-                <option value="'.urlencode('>').'">greater than</option>
-                <option value="'.urlencode('in').'" onclick="nodrop()">listed in</option>
-                <option value="'.urlencode('=').'">equal to</option>
-                <option value="'.urlencode('not like').'">not contain</option>
-                <option value="'.urlencode('not startlike').'">not start with</option>
-                <option value="'.urlencode('not endlike').'">not end with</option>
-                <option value="'.urlencode('!=').'">not equal to</option>
-                <option value="'.urlencode('not in').'" onclick="nodrop()">not listed in</option>
+                <option value="'.urlencode('=').'">is equal to</option>
+                <option value="'.urlencode('<').'">is less than</option>
+                <option value="'.urlencode('>').'">is greater than</option>
+                <option value="'.urlencode('!=').'">is not equal to</option>
+                <option value="'.urlencode('in').'" onclick="nodrop()">is listed</option>
+                <option value="'.urlencode('not in').'" onclick="nodrop()">is not listed</option>
                 ';
                 echo '<tr class="'.$trclass.'"><td class="dataleft"><select name="field" id="field">'.$fldlist.'</select></td><td class="dataleft"><select name="operand" id="operand" >'.$operand.'</select><span id="vaspan"><input type=text name=va id=va></span></td><td class="dataleft"><img src="icons/add.gif" onclick="addfilter(\''.$projid.'\')"></td></tr>';
                 ?>
@@ -2660,11 +2632,6 @@ if ($act == 'createnewuser')
         }
 	exit;
 	}
-if ($act == 'ttDBCreateNewCustomEvent')
-{
-	include("timetracker_management/ajax/ttDBCreateNewCustomEvent.php");
-	exit;
-}
 if ($act == 'createnewproject')
 	{
 	extract($_REQUEST);
@@ -2693,10 +2660,8 @@ if ($act == 'info')
     echo '<iframe src="live.php" frameborder="0" id="liveframe"  name="liveframe" scrolling="auto"  style="width:100%; height:500px">';
 }
 include "switch.php";
-include("timetracker_management/ttEventsOptUpdate.php");
-include("agentinterface_management/uioptupdate.php");
 if ($act == 'updatecamp')
-{
+	{
 	$projectid = $_REQUEST['pid'];
 	$field = $_REQUEST['fld'];
 	$val = $_REQUEST['vl'];
@@ -2714,4 +2679,3 @@ if ($act == 'updatecamp')
         }
 	mysql_query($qu);
 }
-include_once("queuepreview/admin-include.php");

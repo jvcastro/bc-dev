@@ -192,7 +192,7 @@ foreach ($partners as $partner)
 	$partnerdrop .= '<option value="'.$partner['partner_code'].'">'.$partner['partner_name'].'</option>';
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -352,7 +352,7 @@ h3.stitle {
 </style>
 </head>
 <body>
-<iframe id='manifest_iframe_hack' style='display: none;' src='bcsuperadmin.appcache.html'></iframe>
+<!-- <iframe id='manifest_iframe_hack' style='display: none;' src='bcsuperadmin.appcache.html'></iframe> -->
 <div id="container">
 <img src="images/bclogo-small.png" />
 <div id="reporttitle">BlueCloud Management</div>

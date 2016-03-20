@@ -212,6 +212,7 @@ function customdispositions()
               stop: function (event, ui) {
 	        var oData = $(this).sortable('serialize');
                 //$('span').text(data);
+        // console.log(oData);
                 $.ajax({
                     data: oData,
                     type: 'POST',
@@ -261,7 +262,7 @@ $("#customfieldstable tbody").sortable({
 });
 $("#customfieldstable tbody tr").mousedown(function(){
     $(this).css("border","1px outset #000000");
-    $(this).css("background-color","#ffffff");
+    $(this).css("background-color","#ffffff"); 
     $(this).css("cursor","move");
 })
 $("#customfieldstable tbody tr").mouseup(function(){
@@ -468,30 +469,6 @@ function validate(f,table)
         }
     });
 }
-function validate_createnewproject(f, table)
-{
-    var val = $(f).val();
-    $.ajax({
-        url:'admin.php?act=validate&table='+table+'&value='+val,
-        success: function(resp){
-            if (resp != 'okay') {
-                validlistid = false;
-                $(f).css("border","red 2px solid");
-                $(f).attr("title",resp);
-                $(f).attr("placeholder",resp);
-                alert("Only letters, digits, space and underscore allowed.");
-            }
-            else {
-                validlistid = true;
-                $(f).css("border","lightgreen 2px solid");
-                $(f).attr("title","OK");
-                $(f).attr("placeholder",'');
-                // alert("Campaign Name is valid.");
-                createnewproject();
-            }
-        }
-    });
-}
 function getguide(section)
 {
     $.ajax({
@@ -658,6 +635,8 @@ function addcontact(cid)
 			{
 				var resp = http.responseText;
 				$("#dialogcontainer").dialog("close");
+                /* ADDED BY Vincent Castro */
+                alert(resp);
                                 clientdetails(cid);
 			}
 		};
@@ -1249,8 +1228,7 @@ Ext.onReady(function()
                         ?>new Ext.Toolbar.MenuButton({cls:'x-btn-text-icon', icon: 'icons/users.png',
 							text: 'Users',  clickEvent: 'click', menu: [
 									{cls:'x-btn-text-icon', icon: 'icons/nusers.png', text: 'New User', handler: clickhandle, action: 'newusers'},
-									{cls:'x-btn-text-icon', icon: 'icons/musers.png', text: 'Manage Users', handler: clickhandle, action: 'managents'},
-                                    {cls:'x-btn-text-icon', icon: 'icons/timetracker.png', text: 'Time Tracker', handler: clickhandle, action: 'manttracker'}]}),
+									{cls:'x-btn-text-icon', icon: 'icons/musers.png', text: 'Manage Users', handler: clickhandle, action: 'managents'}]}),
                                                                     <?php
                                                                     }
       if ($features->voip && checkrights('manage_campaign'))
@@ -1273,8 +1251,6 @@ Ext.onReady(function()
 							text: 'Reports',  
 							clickEvent: 'click', 
 							menu: [
-                            {cls:'x-btn-text-icon', icon: 'icons/incoming-call.png',text: 'Inbound Report [beta]', handler: getreport, reporttype: 'inboundreport'},
-                            {cls:'x-btn-text-icon', icon: 'icons/timesheet.png',text: 'Agent Timesheet Report [beta]', handler: getreport, reporttype: 'agenttimetrackerreport'},
 							{cls:'x-btn-text-icon', icon: 'icons/apreport.png',text: 'Agent Performance Report', handler: getreport, reporttype: 'agentperformance'},
 							{cls:'x-btn-text-icon', icon: 'icons/cpreport.png',text: 'Campaign Performance Report', handler: getreport, reporttype: 'campperformance'},
 							{cls:'x-btn-text-icon', icon: 'icons/cdreport.png',text: 'Call Data Report', handler: getreport, reporttype: 'calldata'}
@@ -1354,7 +1330,7 @@ function clickhandle(linker)
             {
                 dialogwindow(linker.action);
             }
-        else if (linker.action == 'managents')
+         else if (linker.action == 'managents')
             {
                 $.ajax({
                     url:'admin.php?act=getapp&app=managents&sub=',
@@ -1371,24 +1347,6 @@ function clickhandle(linker)
                     }
                 })
             }
-        else if (linker.action == 'manttracker')
-        {
-            $.ajax({
-                url:'admin.php?act=getapp&app=manttracker',
-                type:'GET',
-                global: false,
-                success: function(resp)
-                {
-                    jQuery("#displayport").html(resp);
-                    /**
-                    getguide();
-                    $(".datatabs").dataTable({
-                        'iDisplayLength':20
-                    });
-                    $(".jbut").button();**/
-                }
-            })
-        }
 	else getapp(linker.action);
 	}
 function barge(exten)
@@ -1685,18 +1643,9 @@ function update(field,ob,vl)
 }
 function mc_update(field,projectid)
 {
-    var value = $("#" + field + projectid).val();
+    var value = $("#"+field+projectid).val();
     $.ajax({
-        url: "admin.php?act=updatecamp&pid=" + projectid + "&fld=" + field + "&vl=" + value,
-        success: function(data) {
-            if (value == "progressive") {
-                jQuery('#queuepreviewdisplay').show();
-            } else if (value == "predictive") {
-                jQuery('#queuepreviewdisplay').hide();
-            } else if (value == "inbound") {
-                jQuery('#queuepreviewdisplay').hide();
-            }
-        }
+        url: "admin.php?act=updatecamp&pid="+projectid+"&fld="+field+"&vl="+value
     });
 }
 var http = getHTTPObject();
@@ -1890,19 +1839,18 @@ function createnewproject(tisid)
 	var clientid =$('#clientid').val();
         var cloneproj = $("#campaignSelect").val();
 	var params = "?act=createnewproject&projname="+projname+"&projdesc="+projdesc+"&dialmode="+dialmode+"&dialpace="+dialpace+"&clientid="+clientid+"&providerid="+providerid+"&clone="+clone+"&cloneproj="+cloneproj;
-    senddata(params, function(data){
-        if (data == 'checkname')
-        {
-            $("#respmessage").html("Campaign name already Exists!");
-            $("#respmessage").css("color","red");
-        }
-        else {
-            manage_persist(data);
-            $('#dialogcontainer').dialog('close');
-        }
-    }
-    );
-}
+	senddata(params, function(data){
+            if (data == 'checkname')
+               {
+                   $("#respmessage").html("Campaign name already Exists!");
+                   $("#respmessage").css("color","red");
+               }
+            else {
+                manage_persist(data);
+                $('#dialogcontainer').dialog('close');
+            }
+        });
+	}
 function getreport(a)
 	{
 	window.open("reports/"+a.reporttype+".php", a.reporttype,"scrollbars=yes,toolbar=no,directories=no,status=no,menubar=no, location=no");
@@ -2498,6 +2446,46 @@ function delcf(projid,fieldname)
         success: function(){manage_persist(projid);} 
     });
 }
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+function savecf(projid,fieldname)
+{  
+    var fieldnames = $("#cf-form").serializeArray();
+    jQuery.ajax({
+        url: "admin.php?act=savecf",
+        type: "POST",
+        data: {
+            "fieldname": fieldnames,
+            "projectid":projid
+        },
+        success: function(data){
+           $("#cf-label-"+fieldname).html( $('input[name='+fieldname+']').val() ); 
+            cancelcf(fieldname);
+            // manage_persist(projid);
+        } 
+    });
+}
+function editcf(fieldname)
+{  
+
+   // $(".cf-edit").hide(); 
+   // $(".cf-cancel").hide(); 
+   // $(".cf-label").hide(); 
+   // $(".cf-label-editable").hide(); 
+
+   $("#cf-edit-"+fieldname).hide(); 
+   $("#cf-cancel-"+fieldname).show(); 
+   $("#cf-label-"+fieldname).hide(); 
+   $("#cf-label-editable-"+fieldname).show(); 
+}
+function cancelcf(fieldname)
+{  
+   $("#cf-edit-"+fieldname).show(); 
+   $("#cf-cancel-"+fieldname).hide(); 
+   $("#cf-label-"+fieldname).show(); 
+   $("#cf-label-editable-"+fieldname).hide(); 
+}
 function progress(t) {
   var file = t.files[0];
   if (file) {
@@ -2739,28 +2727,33 @@ function mceinsert(ht)
     }
     catch(err) {
     }
-var ed = tinyMCE.get('scr');     
-var range = ed.selection.getRng();
-var inputNode = ed.getDoc().createElement ("p" );
-inputNode.className= 'afield';
-if (ht == 'text')
-    {
-        var htm = '<input class="fi" type="text" name="'+name+'" />';
-    }
-if (ht == 'select')
-    {
-        var htm = '<select class="fi" name="'+name+'"><option></option>';
-        jQuery(".seloptions").each(
-        function() {
-            htm += '<option value="'+$(this).val()+'">'+$(this).val()+'</option>';
+    var ed = tinyMCE.get('scr');     
+    var range = ed.selection.getRng();
+    var inputNode = ed.getDoc().createElement ("p" );
+    inputNode.className= 'afield';
+    if (ht == 'text')
+        {
+            var htm = '<input class="fi" type="text" name="'+name+'" />';
         }
-        );
-        htm+='</select>';
+    if (ht == 'select')
+        {
+            var htm = '<select class="fi" name="'+name+'"><option></option>';
+            jQuery(".seloptions").each(
+            function() {
+                htm += '<option value="'+$(this).val()+'">'+$(this).val()+'</option>';
+            }
+            );
+            htm+='</select>';
+        }
+    inputNode.innerHTML = "<label>"+lab+"</label>&nbsp;&nbsp;"+htm;
+    // alert(inputNode);
+    try {
+        range.insertNode(inputNode);
+    } catch(err) {
+        alert("Select a part in the editor where do you want to put it.");
     }
-inputNode.innerHTML = "<label>"+lab+"</label>&nbsp;&nbsp;"+htm;
-range.insertNode(inputNode);
-$("#dialogcontainer").dialog('close');
-doeditable();
+    $("#dialogcontainer").dialog('close');
+    doeditable();
 }
 var toclear = 0;
 function doeditable()

@@ -253,13 +253,11 @@ if ($act == 'exclusionupload' || $act == 'listupdatefile')
 	{
 	$myfile = basename( $_FILES['csvfile']['name']);
 	$target_path = $target_path . basename( $_FILES['csvfile']['name']);
-//	if ($_REQUEST['listid'] <> '')
-//	{
         $r = mysql_query("SELECT * from lists_exclusion where exclusion_name = '".$_REQUEST['listid']."'");
-		$ro = mysql_num_rows($r);
+	$ro = mysql_num_rows($r);
         $lrow = mysql_fetch_assoc($r);
-		$li = $_REQUEST['listid'];
-		$pr = $_REQUEST['projects'];
+	$li = $_REQUEST['listid'];
+	$pr = $_REQUEST['projects'];
         $listids_arr = lists::findbyProjectId($pr, TRUE, false);
         $listids = array();
         foreach ($listids_arr as $lis)
@@ -269,23 +267,19 @@ if ($act == 'exclusionupload' || $act == 'listupdatefile')
         $aglist = 'agentgenerated'.$pr;
         $listids[$aglist] = "'".$aglist."'";
         $lstr = implode(",",$listids);
-		if ($ro ==0 && $act == 'exclusionupload')
+	if ($ro ==0 && $act == 'exclusionupload')
 		{
 			mysql_query("insert into lists_exclusion set exclusion_name = '$li', projectid = '$pr', bcid = '$bcid', date_created = '".time()."'") or die(mysql_error());
-            $eid = mysql_insert_id();
+                        $eid = mysql_insert_id();
 		}
-		else 
-		{
-			if ($ro != 0 && $lrow['bcid'] != $bcid && $_REQUEST['listid'] <> '')
-			{
-				echo "The specifiedListId cannot be used in this account, please use a different ListId";
-				// print_r($_REQUEST);
-				exit;
-			}
-			if ($ro !=0) 
-				$eid = $lrow['id'];
-		}
-//	}
+         else {
+             if ($ro != 0 && $lrow['bcid'] != $bcid)
+             {
+                echo "The specifiedListId cannot be used in this account, please use a different ListId";
+                exit;
+             }
+             if ($ro !=0) $eid = $lrow['id'];
+         }
 	if (strlen($myfile) > 1)
 	{
 	if(move_uploaded_file($_FILES['csvfile']['tmp_name'], $target_path)) 
@@ -305,8 +299,6 @@ if ($act == 'exclusionupload' || $act == 'listupdatefile')
                 {
                     $aff = lists::updatebyphone($pr, $data[0], $data[1], $lstr);
                     $ctaff = $ctaff + $aff;
-                    // print_r($data);
-                    // print_r($listids_arr);
                     //var_dump($data);
                 }
                 $ct++;

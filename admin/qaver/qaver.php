@@ -12,10 +12,12 @@ $viewfields = array( // fieldname=>array(label,checked by default)
     'phone'=>array('Phone',1),
     'altphone'=>array('Alt Phone',0),
     'mobile'=>array('Mobile',0),
+    'title'=>array('Title',1),
     'cname'=>array('Name',1),
     'cfname'=>array('Firstname',0),
     'clname'=>array('Lastname',0),
     'company'=>array('Company',1),
+    'industry'=>array('Industry',0),
     'email'=>array('Email',1),
     'address1'=>array('Address1',0),
     'address2'=>array('Address2',0),
@@ -45,19 +47,56 @@ function getagentids($bcid)
 	}
 function dispolist($projectid)
 	{
-		if ($projectid != 'all') 
-			$ps = "in (0,$projectid)";
-		else  
-			$ps = "in (SELECT projectid FROM projects where bcid=". $_SESSION['bcid'] ." UNION SELECT 0)";
+		if ($projectid != 'all') $ps = "in (0,$projectid)";
+		else  $ps = "in (0,99999)";
 		$ret = array();
-		$res = mysql_query("SELECT * FROM statuses WHERE projectid $ps GROUP BY statusname");
+		$res = mysql_query("SELECT * from statuses where projectid $ps order by projectid DESC, statusname ASC");
 		$ret[]['statusname'] = "all";
 		while ($row = mysql_fetch_assoc($res))
-		{
-			$ret[] = $row;
-		}
+			{
+				$ret[] = $row;
+			}
 		return $ret;
 	}
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+function rendercustomdata($bid){
+	$res = mysql_query("SELECT customfields from projects where projectid = '$bid'");
+	$row = mysql_fetch_assoc($res);
+	$row = json_decode($row['customfields']);
+	$table = '<div id="customdatatable"><h3>Custom Fields</h3><table class="vftab"><tr><th>Column</th><th>Show</th></tr>';
+
+	foreach ($row as $key => $value) {
+		$customarray[] = array($key => $key, 0);
+		$table .= '<tr><td class="label">'.$key.'</td><td class="ck"><input type="checkbox" name="viewfields[]" class="vfs" value="'.$key.'"></td></tr>';
+	}
+
+    $table .= '</table></div>';
+    // print_r($customarray);
+    // print_r($viewfields);
+	return $table;
+}
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+function arraycustomdata($bid){
+	$res = mysql_query("SELECT customfields from projects where projectid = '$bid'");
+	$row = mysql_fetch_assoc($res);
+	$row = json_decode($row['customfields']);
+	foreach ($row as $key => $value) {
+		$customarray[$key] = array($key, 0, 'custom');
+	}
+	return $customarray;
+}
+/***************************/
+/* ADDED BY Vincent Castro */
+/***************************/
+function getbcidbypid($pid){
+	$res = mysql_query("SELECT bcid from projects where projectid = '$pid'");
+	$row = mysql_fetch_assoc($res);
+	return $row['bcid'];
+}
 function projectlist($bcid)
 	{
 		$res = mysql_query("SELECT * from projects where bcid = '$bcid' ORDER BY projectname");
@@ -119,8 +158,14 @@ function listrecords($pid, $dispo, $start, $end, $datetype = 'calldate')
 				$res = mysql_query($query);
 			}
 		else {
-		$query = "SELECT * from leads_done where projectid = '$pid' $dispo_q and $datefield >= '".strtotime($start)."' and 
-                    $datefield <= '".strtotime($end." 23:59:59")."' limit 50000";
+		// $query = "SELECT * from leads_done where projectid = '$pid' $dispo_q and $datefield >= '".strtotime($start)."' and $datefield <= '".strtotime($end." 23:59:59")."' limit 50000";
+		/***************************/
+		/* ADDED BY Vincent Castro */
+		/***************************/
+		$query = "  SELECT * 
+					FROM leads_done 
+					LEFT JOIN leads_custom_fields ON leads_done.leadid = leads_custom_fields.leadid
+					WHERE projectid = '$pid' $dispo_q and $datefield >= '".strtotime($start)."' and $datefield <= '".strtotime($end." 23:59:59")."' limit 50000";
 		$res = mysql_query($query);
 		}
 		$debugm = $query;

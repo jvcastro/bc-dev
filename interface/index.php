@@ -1,15 +1,14 @@
 <?php
 $a = session_start();
 if (!$a)
-{
-	echo "unable to start session";
-}
+	{
+		echo "unable to start session";
+	}
 ini_set('display_errors','off');
 date_default_timezone_set($_SESSION['timezone']);
 include "../dbconnect.php";
 include "../classes/classes.php";
 include "phpfunctions.php";
-include "agentuisettings/uisetopts.php";
 $session = new session(session_id());
 if ($_REQUEST['act'] == 'changeproj')
 	{
@@ -31,7 +30,7 @@ if ($_REQUEST['act'] == 'changeproj')
                     $projrec = mysql_fetch_assoc($proje);
                     $recordingmode = $projrec['callrecording'];
                     $conf = mysql_fetch_assoc($res);
-		mysql_query("update liveusers set extension = '$e', projectid = '$p', leadid = NULL, callid = NULL, callerid = NULL, status = 'paused', confserver = '".$conf['confserver']."' where userid = '$session->userid'");
+		mysql_query("update liveusers set extension = '$e', projectid = '$p', status = 'paused', confserver = '".$conf['confserver']."' where userid = '$session->userid'");
 		mysql_query("update projects set lastactive = NOW() where projectid = '$p'");
                 }
                 $inb = $_GET['inb'];
@@ -48,39 +47,24 @@ if (!$session->userid)
 		header("Location: ../login/");
 		//var_dump($_SESSION);
 	}
-$userid = $session->userid;
-$bcid = $_SESSION['bcid'];
+ $userid = $session->userid;
 $templateres = mysql_query("SELECT templateid from templates where projectid = '$session->projectid'");
 $trow = mysql_fetch_array($templateres);
 $withemail = $trow['templateid'];
 $bcdetailsres = mysql_query("SELECT * from bc_clients where bcid = '".$_SESSION['bcid']."'");
 $bcdetails = mysql_fetch_assoc($bcdetailsres);
-$getproject = mysql_query("SELECT * FROM projects WHERE projectid = '$p'");
-while ($getprojectdetails = mysql_fetch_array($getproject)) {
-    $getprojectdata[] = $getprojectdetails;
-}
-foreach ($getprojectdata as $getdata) {
-    $clientid = $getdata["clientid"];
-}
-$getclient_contacts = mysql_query("SELECT * FROM client_contacts WHERE clientid = '$clientid'");
-while ($getclient_contactsdetails = mysql_fetch_array($getclient_contacts)) {
-    $getclient_contactsdata[] = $getclient_contactsdetails;
-}
-foreach ($getclient_contactsdata as $getdata) {
-    $client_contactid = $getdata["client_contactid"];
-    $getclient_contactid .= $client_contactid . ",";
-}
-$ci = rtrim($getclient_contactid, ",");?>
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>BlueCloud International</title>
 <link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
 <link rel="stylesheet" type="text/css" href="../admin/ext/resources/css/xtheme-slate.css">
 <link rel="stylesheet" type="text/css" href="nav.css" />
+<link type="text/css" rel="stylesheet" media="all" href="../jquery/css/chat/chat.css" />
 <link rel="stylesheet" type="text/css" href="../jquery/css/redmond/jquery-ui-1.8.12.custom.css">
 <link rel="stylesheet" type="text/css" href="../jquery/css/redmond/jquery.ui.selectmenu.css">
 <link rel="stylesheet" type="text/css" href="../jquery/datatable/css/jquery.dataTables.css"/>
 <link rel="stylesheet" type="text/css" href="../jquery/fancybox/jquery.fancybox-1.3.4.css" />
-<link rel="stylesheet" type="text/css" href="../jquery/countdown/jquery.countdown.css">
 <link href="styles/style.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="custom.css" />
 <!--[if lte IE 7]>
@@ -89,20 +73,6 @@ $ci = rtrim($getclient_contactid, ",");?>
 <style>
 .clear {
 	clear:both;
-}
-.no-close .ui-dialog-titlebar-close {
-  display: none;
-}
-#hopper_results {
-    border:1px solid #8ac8db;
-    padding: 10px;
-}
-#hopper_accordion {
-    width: 1150px;
-    left: 10px;
-    border:1px solid #c5dbec;
-    border-radius: 5px;
-    padding:5px 10px 10px 10px;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="../jquery/datetimepicker/jquery.datetimepicker.css" />
@@ -116,26 +86,15 @@ $ci = rtrim($getclient_contactid, ",");?>
 <script type="text/javascript" src="../jquery/js/blockui.js"></script>
 <script type="text/javascript" src="../jquery/js/jquery.ui.selectmenu.js"></script>
 <?php
-// echo ($session->user['chat'] == 'enabled') ? '<script type="text/javascript" src="../jquery/js/chat.js"></script>' : '';
-if ($session->user['chat'] == 'enabled')
-{
-    if (ui_getOpt($p, 'isChatEnabled'))
-    {
-        echo "<script type='text/javascript' src='../jquery/js/chat.js'></script>";
-        echo "<link type='text/css' rel='stylesheet' media='all' href='../jquery/css/chat/chat.css' />";
-    }
-}
+echo ($session->user['chat'] == 'enabled') ? '<script type="text/javascript" src="../jquery/js/chat.js"></script>' : '';
 ?>
 <script type="text/javascript" src="../jquery/js/tablesorter.js"></script>
 <script type="text/javascript" src="../jquery/datatable/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../jquery/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="../jquery/countdown/jquery.plugin.min.js"></script>
-<script type="text/javascript" src="../jquery/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="../jquery/jquery-cookie/jquery.cookie.js"></script>
-<script type="text/javascript" src="../jquery/Idle.js/build/idle.min.js"></script>
 <script type="text/javascript">
 function focusbox(x){x.style.backgroundColor = "#E1E1E1";}
 function outfocus(y){y.style.backgroundColor = "#FFFFFF";}
+// window.applicationCache.update();
 </script>
 <?
 //include "ajax.php";
@@ -149,9 +108,9 @@ if ($dialmode == 'inbound')
 ?>
 </head>
 <body onLoad="indicator();" style="overflow:auto; overflow-style:auto">
+<!-- <iframe id='manifest_iframe_hack' style='display: none;' src='bcagent.appcache.html'></iframe> -->
 <!--<body style="overflow:auto; overflow-style:auto">-->
-<div id="dialogcontainer" style="display:none"></div>
-<div id="ttrackerpopupcontainer" style="display:none"><div id='tttimeoutPauseTimer' style='width: 240px; height: 45px;'></div><br><p align='center'><b><?php echo $session->user['alast'].", ".$session->user['afirst']; ?><br>(Pause)</b></p></div>
+    <div id="dialogcontainer" style="display:none"></div>
 <div id="container" align="left">
 	<div id="top">
     <div style="float:left;width:195px; height:50px; background-image:url(images/bclogo-small.png)"></div>
@@ -371,7 +330,7 @@ if ($dialmode == 'inbound')
 								}
 							elseif ($disp['statustype'] == 'booking')
 										{
-											echo "<option onclick=\"doslots('$ci')\">";
+											echo "<option onclick=\"doslots()\">";
 											echo $disp['statusname'];
 											echo "</option>";
 										}
@@ -395,23 +354,11 @@ if ($dialmode == 'inbound')
 							}
 						?>
                     </select></td></tr>
-                    <tr id="datetd" style="display:none; text-align:left;" class="title">
-                       <td class="title">Date:</td>
-                       <td><input type="text" id="calendar" name="calendar" /></td>
-                    </tr>
-                    <tr id="dodisposeapplydate" style="display:none">
-                       <td></td>
-                       <td><input type="hidden" id="leadidtoapplybookingcalendar" name="leadidtoapplybookingcalendar" /><input type="hidden" id="slotdatecalendar" name="slotdatecalendar" /><input type="hidden" id="slotidfrombookingcalendar" name="slotidfrombookingcalendar" /><input type="button" onclick="applydatebookingcalendar()" class="jbutton" value="Apply"/></td>
-                    </tr>
-                    <tr id="dodispose" style="display:none">
-                       <td></td>
-                       <td><input type="button" class="jbutton" value="Done"/></td>
-                    </tr>
-                    </table>
+                <tr id="datetd" style="display:none; text-align:left;" class="title"><td class="title">Date:</td><td><input type="text" id="calendar" name="calendar" /></td></tr>
+                <tr id="dodispose" style="display:none"><td></td><td><input type="button" class="jbutton" value="Done" /></td></tr></table>               
         </div>
         </div>
             </div>
-<?php include("queuepreview/index-include.php") ?>
         </div>
             <div id="otherinfo2" style="display:none">
             <h3>Other Information</h3>
@@ -432,6 +379,16 @@ if ($dialmode == 'inbound')
     </div>
     </div>	
     <script>
+
+    $(document).ready(function(){
+        $('body').on("click","#maintabpanel ul li", function(){
+            // $("#maininfocontent").accordion();
+            // $("#otherinfo").accordion();
+            // $("#othercontent").accordion();
+            populatescript();
+        });
+    });
+
         var addressFormatting = function(text){
     var newText = text;
     //array of find replaces
@@ -462,23 +419,15 @@ if ($dialmode == 'inbound')
  $("#otherinfo2").accordion();
  $(".jbutton").button();
  previous_session();
+ getnewcustomdata(<?php echo $p; ?>);
 	</script>
-<?php
-        if ($session->user['chat'] == 'enabled')
-        {
-            if (ui_getOpt($p, 'isChatEnabled'))
-            {
-                include "../messaging.php";
-            }
-        }
+            <?php
+    include "../messaging.php";
     }
-?>
+	?>
     </div>
 </div>
-<?php 
-    include("bookingrecurringslot/index-include.php"); 
-    echo "<input type='hidden' id='ci' value='$ci'"; 
-?>
+<?php //include "http://bcdev-vince.phbox.info/cache.php"; ?>
 </body>
 <script>
      $(".jbutton").button();

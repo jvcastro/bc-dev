@@ -30,22 +30,13 @@ $pid = $pidrow['projectid'];
 $actionid = $pidrow['actionid'];
 $_SESSION['actionid'] = $actionid;
 include "phpfunctions.php";
-require_once '../classes-dev/classes.php';
+require_once '../classes/classes.php';
 include "../ami-client.php";
 $ami = new AMI("webby","1234561");
 $ami->debug = true;
 $ami->confserver = $pidrow['confserver'];
 $confserver = new AMI("webby","1234561");
 $confserver->confserver = $pidrow['confserver'];
-if ($act == 'checkhopper') {
-    $leadid              = $_REQUEST['leadid'];
-    $projectid           = $_REQUEST['projectid'];
-    $checkhopperifcalled = mysql_query("SELECT * FROM hopper WHERE leadid = " . $leadid . " AND projectid = " . $projectid . "");
-    while ($checkhopperdetails = mysql_fetch_assoc($checkhopperifcalled)) {
-        $checkhopper[] = $checkhopperdetails;
-    }
-    echo $checkhopper[0]["called"];
-}
 if ($act == 'lockteamcb')
 {
     mysql_query("UPDATE leads_done set isteamcallback = 0 where leadid = ".$_REQUEST['leadid']);
@@ -176,71 +167,6 @@ if ($act == 'newinboundcall')
         <?php
         exit;
 }
-if ($act == 'newinboundcallmanual')
-{
-    $arow = $pidrow;
-    ?>
-    <style>
-        .answerbutton {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 18px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }    
-    </style>
-    <div id=nlp>
-    <?php 
-    if ($arow['callerid'] == 'anonymous')
-    {
-    ?>
-        Search: <input type="text" id="nlphone" name="nlphone"  value="<?=$arow['callerid'];?>" /> 
-        <input type="button" onclick="nlsearch(1)" id="formbutton" value="Search"/> 
-    <?php
-    }
-    ?>
-        <center>
-        <br/>
-        <input type="button" class="answerbutton" onclick="answerinboundcall('<?=$arow['callid'];?>')" id="formbutton" value="Answer Call" />
-        </center>
-        </div>
-        <div id=nlmain>
-        </div>
-        <?php
-        exit;
-}
-if ($act == 'answerinboundcall')
-{
-    $_callid = $_REQUEST['callid'];
-    if ( preg_match("/^" . $pidrow['callid'] . "$/", $_callid) )
-    {
-        $callq_res = mysql_query("UPDATE callqueue SET callmode= 'autoanswer' where callid = '$_callid' ");
-        if(mysql_affected_rows() > 0)
-        {
-            $callhistory_res = mysql_query("SELECT * FROM callhistory WHERE callid = '$_callid'");
-            if (mysql_num_rows($callhistory_res) > 0)
-            {
-                $callhistory_rec = mysql_fetch_assoc($callhistory_res);
-                echo $callhistory_rec['leadid'];
-            }
-            startlog('talk');
-        }
-        else
-        {
-            echo "Pickup Failed";
-        }
-    }
-    else
-    {
-            echo "Pickup Failed";
-    }
-    exit;
-}
 if ($act == 'createnewinboundentry')
 {
     $phone = $_REQUEST['newphone'];
@@ -269,8 +195,8 @@ if ($act == 'inbounduselead')
     $leadid = $_REQUEST['leadid'];
     $record = new records($leadid);
     $ipid = $pidrow['projectid_inbound_active'];
-    // mysql_query("update liveusers set leadid = '".$record->leadid."' where userid = $uid");
-    // mysql_query("update callman set leadid = '".$record->leadid."' where userid = $uid");
+    mysql_query("update liveusers set leadid = '".$record->leadid."' where userid = $uid");
+    mysql_query("update callman set leadid = '".$record->leadid."' where userid = $uid");
     $record->data['override_pid'] = $record->projectid; //override current main campaign;
      echo json_encode($record->data);
      exit;
@@ -347,11 +273,11 @@ if ($act == 'savecustomdata')
     $leadid = $_REQUEST['leadid'];
     $data = json_decode($data,true);
     /***************************/
-    /* ADDED BY Vincent Castro */
-    /***************************/
+	/* ADDED BY Vincent Castro */
+	/***************************/
     $selectcf = mysql_query("SELECT * from leads_custom_fields where leadid = '".$leadid."'");
-    $fetchcf = mysql_fetch_assoc($selectcf);
-    $countRows = mysql_num_rows($selectcf);
+	$fetchcf = mysql_fetch_assoc($selectcf);
+	$countRows = mysql_num_rows($selectcf);
     if($countRows == 0){
       customdata::add($leadid,$data);
     } else {
@@ -359,76 +285,86 @@ if ($act == 'savecustomdata')
     }
     exit;
 }
-if ($act == 'getcustomdata')
-{
+if ($act == 'getcustomdata') {
     $leadid = $_REQUEST['leadid'];
     $auid = $_REQUEST['userid'];
-    if ($leadid > 0)
-    {
-    // echo $leadid." ".$auid;
-    $res = mysql_query("SELECT * from leads_custom_fields where leadid = '$leadid'");
-    $row = mysql_fetch_assoc($res);
-    $ret =  json_decode($row['customfields']);
-    /***************************/
-    /* ADDED BY Vincent Castro */
-    /***************************/
-    /* GET PROJECT ID */
-    $pidres = mysql_query("SELECT * from liveusers where userid = '$auid'");
-    $pidrow = mysql_fetch_assoc($pidres);
-    $pid = $pidrow['projectid'];
-    /* SORT FOR EXISTING CUSTOM FIELDS */
-    $adminCustomFieldsGet = mysql_query("SELECT customfields FROM projects WHERE projectid = '$pid'");
-    $adminCustomFieldsRow = mysql_fetch_assoc($adminCustomFieldsGet);
-    $adminCustomFields = json_decode($adminCustomFieldsRow['customfields']);
-    $objOrig = $adminCustomFields;
-    $objOld = $ret;
-    $arrOrig = get_object_vars($objOrig);
-    $arrOld = get_object_vars($objOld);
-    $newOld = array();
-    $newData = array();
-    // print_r($arrOrig);
-    // echo "<br><br>";
-    // print_r($arrOld);
-    // echo "<br><br>";
-    foreach ($arrOrig as $key => $value) {
-        $newKey = preg_replace('/\s+/', '_', $key);
-        $compareKey[] = $newKey;
-    }
-    foreach ($arrOld as $key => $value) {
-        $newKey = preg_replace('/\s+/', '_', $key);
-        $compareKey2[] = $newKey;
-        $newOld[$newKey] = $value;
-    }
-    //SORT IN ORDER
-    $properOrderedArray = array_merge(array_flip($compareKey), $newOld);
-    // print_r($properOrderedArray);
-    // MISSING ARRAY
-    if(count($compareKey) > count($compareKey2)){
-        $comparison = array_flip(array_diff($compareKey, $compareKey2));
-    }
-    // print_r($comparison);
-    if(empty($comparison)){
-        foreach ($properOrderedArray as $key => $value) {
-            $newData[str_replace("_", " ", $key)] = $value;
+    if ($leadid > 0) {
+        // echo $leadid." ".$auid;
+        $res = mysql_query("SELECT * from leads_custom_fields where leadid = '$leadid'");
+        $row = mysql_fetch_assoc($res);
+        $ret =  json_decode($row['customfields']);
+        /***************************/
+        /* ADDED BY Vincent Castro */
+        /***************************/
+        /* GET PROJECT ID */
+        $pidres = mysql_query("SELECT * from liveusers where userid = '$auid'");
+        $pidrow = mysql_fetch_assoc($pidres);
+        $pid = $pidrow['projectid'];
+        /* SORT FOR EXISTING CUSTOM FIELDS */
+        $adminCustomFieldsGet = mysql_query("SELECT customfields FROM projects WHERE projectid = '$pid'");
+        $adminCustomFieldsRow = mysql_fetch_assoc($adminCustomFieldsGet);
+        $adminCustomFields = json_decode($adminCustomFieldsRow['customfields']);
+        $objOrig = $adminCustomFields;
+        $objOld = $ret;
+        $arrOrig = get_object_vars($objOrig);
+        $arrOld = get_object_vars($objOld);
+        $newOld = array();
+        $newData = array();
+        // print_r($arrOrig);
+        // echo "<br><br>";
+        // print_r($arrOld);
+        // echo "<br><br>";
+        foreach ($arrOrig as $key => $value) {
+            $newKey = preg_replace('/\s+/', '_', $key);
+            $compareKey[] = $newKey;
         }
-    } else {
-        foreach ($properOrderedArray as $key => $value) {
-            foreach ($comparison as $comkey => $comvalue) {
-                if($comkey == $key){
-                    $newData[str_replace("_", " ", $key)] = "";
-                } else {
-                    $newData[str_replace("_", " ", $key)] = $value;
+        foreach ($arrOld as $key => $value) {
+            $newKey = preg_replace('/\s+/', '_', $key);
+            $compareKey2[] = $newKey;
+            $newOld[$newKey] = $value;
+        }
+        //SORT IN ORDER
+        $properOrderedArray = array_merge(array_flip($compareKey), $newOld);
+        // print_r($properOrderedArray);
+        // MISSING ARRAY
+        if(count($compareKey) > count($compareKey2)){
+            $comparison = array_flip(array_diff($compareKey, $compareKey2));
+        }
+        // print_r($comparison);
+        if(empty($comparison)){
+            foreach ($properOrderedArray as $key => $value) {
+                $newData[str_replace("_", " ", $key)] = $value;
+            }
+        } else {
+            foreach ($properOrderedArray as $key => $value) {
+                foreach ($comparison as $comkey => $comvalue) {
+                    if($comkey == $key){
+                        $newData[str_replace("_", " ", $key)] = "";
+                    } else {
+                        $newData[str_replace("_", " ", $key)] = $value;
+                    }
                 }
             }
         }
-    }
-    // print_r($newData);
-    if(empty($objOld)){
-        foreach ($arrOrig as $key => $value) {
-            $newData[$key] = "";
+        // print_r($newData);
+        if(empty($objOld)){
+            foreach ($arrOrig as $key => $value) {
+                $newData[$key] = "";
+            }
         }
-    }
-    echo json_encode($newData);
+        // echo json_encode($newData);
+
+        if ($pid > 0) {
+            $res = mysql_query("SELECT customfields FROM projects WHERE projectid = '$pid'");
+            $row = mysql_fetch_assoc($res);
+            $ret = json_decode(stripslashes($row['customfields']),true);
+            foreach ($ret as $key => $value) {
+                $leadCustom[$value] = array('name' => $key, 'value' => $newData[$key]);
+            }
+            // $ret = json_decode(stripslashes($row['customfields']),true);
+            echo json_encode($leadCustom);
+        }
+
     }
     exit;
 }
@@ -794,7 +730,6 @@ if ($act == 'getsearchdetails')
 	{
 	savelead($_GET);
 	$leadidman = $_REQUEST['leadid'];
-    mysql_query("UPDATE hopper SET called = 1 WHERE leadid = " . $leadidman);
 	$mandial = 1;
 	$preview = 1;
 	$act = 'getinfo';
@@ -831,22 +766,18 @@ if ($act == 'stoprecording')
     exit;
 }
 if ($act == 'submit' ||  $act == 'exitdial' || $act == 'prevlead')
-	{
+{
 	$data = $_GET;
-	if ($data['lid'])
-	{
-	savelead($data);
+	if ($data['lid']) {
+        savelead($data);
 	}
-        //$ami->stoprecording($pidrow['extension']);
+    //$ami->stoprecording($pidrow['extension']);
 	$ami->hangup($GET['lid']);
 	//echo mysql_error();
 	//exit();
-	if ($act == 'submit')
-	{
-	$act = 'next';
-	}
-	elseif ($act == 'prevlead')
-		{
+	if ($act == 'submit') {
+	   $act = 'next';
+	} elseif ($act == 'prevlead') {
 		//$nextres = mysql_query("SELECT * from hopper where projectid = '$pid' and called = 0 limit 1;");
 		//$nextrow = mysql_fetch_array($nextres);
  		//$leadidman = $nextrow['leadid'];
@@ -854,14 +785,12 @@ if ($act == 'submit' ||  $act == 'exitdial' || $act == 'prevlead')
  		$mandial = 1;
 		$preview =1;
  		$act = 'next';
-		}
-	elseif ($act == 'exitdial')
-		{
+	} elseif ($act == 'exitdial') {
 		endlog();
 		mysql_query("delete from liveusers where userid ='$auid'");
 		exit;
-		}
 	}
+}
 if ($act == 'dopause')
 	{
 	//sleep(1);
@@ -902,20 +831,9 @@ if ($act == 'doactive')
 if ($act == 'hangup')
 	{
                 //$ami->stoprecording($pidrow['extension']);
-        //if ($lid == 0)
-        //{
-            $lu_res = mysql_query("SELECT callid from liveusers where userid ='$auid'");
-            if (mysql_num_rows(lu_res) > 0)
-            {
-                $lu_row = mysql_fetch_array($lu_res);
-                $hanged = $ami->hangupcallid($lu_row['callid']);
+		$hanged = $ami->hangup($lid);
                 sleep(1);
-            }
-            elseif ($lid > 0) {
-               $hanged = $ami->hangup($lid);
-                sleep(1);
-            }
-        $asres = mysql_query("SELECT status from liveusers where userid ='$auid'");
+                $asres = mysql_query("SELECT status from liveusers where userid ='$auid'");
  		$asrow = mysql_fetch_array($asres);
  		$sst = $asrow['status'];
  		if ($sst == 'ended') {
@@ -942,7 +860,7 @@ if ($act == 'next')
  $ami->hangup($lid);
  if ($dialmode == 'predictive' || $dialmode == 'inbound' || $dialmode == 'blended')
  {
-    mysql_query("update liveusers set status='available', webstatus='free', callid= NULL, callerid= NULL, waiting= NOW() where userid ='$auid'");
+    mysql_query("update liveusers set status='available', webstatus='free', waiting= NOW() where userid ='$auid'");
     echo 'checkforcalls';
      startlog('wait');
    //mysql_query("update liveusers set leadid ='0', status='onqueue', webstatus='free', waiting= NOW(), ct = ct - 1 where userid ='$auid'");
@@ -961,7 +879,7 @@ if ($act == 'next')
         $record->locklead();
         exit;
  }
- $nextres = mysql_query("SELECT * FROM hopper WHERE projectid = '$pid' AND called = 0 ORDER BY RAND() limit 1;");
+ $nextres = mysql_query("SELECT * from hopper where projectid = '$pid' and called = 0 limit 1;");
  $nextct = mysql_num_rows($nextres);
  if ($nextct > 0)
  	{
@@ -984,21 +902,16 @@ if ($act =='check')
 	//$check = mysql_num_rows($checkres);
 	$liveagent = $pidrow;
 	if ($liveagent['status'] == 'incall' || $liveagent['status'] == 'inboundcall')
-	{
-	mysql_query("update liveusers set webstatus ='done' where userid ='$auid'");
-	startlog('talk');
-	$act = 'getinfo';
-	}
-    elseif ($liveagent['status'] == 'inboundmanual') 
-    {
-        mysql_query("update liveusers set webstatus ='done' where userid ='$auid'");
-        $act = 'getinfo';
-    }        
+		{
+		mysql_query("update liveusers set webstatus ='done' where userid ='$auid'");
+		startlog('talk');
+		$act = 'getinfo';
+		}
 	elseif ($liveagent['status'] == 'paused')
-	{
-		echo 'paused';
-		exit;
-	}
+		{
+			echo 'paused';
+			exit;
+		}
 	else 
 	{
 	echo 'false';
@@ -1045,28 +958,20 @@ if ($act == 'getinfo')
 	}
 	if ($status =='inboundcall')
 	{
-        if ($leadid == 0 || $callerid == 'anonymous')
-        {
-            echo 'newinboundcall';
-                exit;
+                if ($leadid == 0)
+                {
+                    echo 'newinboundcall';
+                    exit;
 		}
 	}
-    elseif ($status == 'inboundmanual') 
-    {
-        if ($leadid == 0 || $callerid == 'anonymous')
-        {
-            echo 'newinboundcallmanual';
-                exit;
-        }        
-    }
         $record = new records($leadid);
         if ($record->epoch_callable > 0)
         {
         $record->dtime = date("Y-m-d H:i:s",$record->epoch_callable);
         }
         unset($record->data['epoch_callable']);
-        if ($status =='inboundcall' || $status = 'inboundmanual')
-        {
+        if ($status =='inboundcall')
+	{
             $record->data['inboundcall'] = 1;
         }
         echo json_encode($record->data);

@@ -3,7 +3,9 @@ function debug_query($queries)
 {
 	if (!preg_match("/^\/admin-dev/", $_SERVER['PHP_SELF']))
 		return;
+
 	mysql_query("INSERT INTO debug_query SET query=\"" . $_SERVER['PHP_SELF'] ."\"");
+
 	foreach ($queries as $qry) {
 		mysql_query("INSERT INTO debug_query SET query =\"" . $qry ."\"");
 		// echo "Content-type: text/html";
@@ -25,6 +27,7 @@ function addusertoteam($userid,$teamid)
 	$row = mysql_fetch_array($tres);
 	$uteams = json_decode($row['team'],true);
 	if (!in_array($t,$uteams))
+	
 		{
 		$uteams[] = $t;
 		mysql_query("update memberdetails set team = '".json_encode($uteams)."' where userid = '$u'");
@@ -32,6 +35,7 @@ function addusertoteam($userid,$teamid)
 }
 function checkagentrole($userid)
 {
+    
     $res = mysql_query("select roleid from members where userid = '$userid'");
     $row = mysql_fetch_assoc($res);
     $rid = $row['roleid'];
@@ -90,6 +94,7 @@ function savelead($leadid)
                 $torow = $drow;           
             $data = $record->data;
             $tocat = $torow['category'];
+
             $tolist = $torow['options'];
             $nlistres = mysql_query("SELECT * from lists where lid = '$tolist'");
             $nlist = mysql_fetch_assoc($nlistres);
@@ -114,6 +119,7 @@ function savelead($leadid)
             //Transfer Custom Data // scriptfields
             $tcdata = $record->customdata();
             $tsdata = $record->scriptdata();
+
             $newtdata = array();
             foreach ($tcdata as $key=>$value)
             {
@@ -147,26 +153,6 @@ function createdropdown($options = array(),$namefield, $valuefield)
 function createinput($idname, $value ="", $type = "text", $class="")
 	{
 		return "<input type=\"$type\" id=\"$idname\" name=\"$idname\" value=\"$value\" class=\"$class\" />";
-	}
-function createselect($idname, $value ="", $clientcontactid = "")
-	{
-		if ( $value == "" ) {
-			return "<select id=\"$idname\">
-					  <option value=\"\">-</option>
-			          <option value=\"Daily\">Daily</option>
-			          <option value=\"Weekly\">Weekly</option>
-			          <option value=\"Monthly\">Monthly</option>
-			          <option value=\"Yearly\">Yearly</option>
-			    	</select>";
-		} else {
-			return "<select id=\"$idname\">
-					  <option value=\"".$value."_".$clientcontactid."\">$value</option>
-			          <option value=\"Daily_$clientcontactid\">Daily</option>
-			          <option value=\"Weekly_$clientcontactid\">Weekly</option>
-			          <option value=\"Monthly_$clientcontactid\">Monthly</option>
-			          <option value=\"Yearly_$clientcontactid\">Yearly</option>
-			    	</select>";
-		}
 	}
 function isbooked($c)
 	{
@@ -234,6 +220,7 @@ function newadmin($bcid,$params)
 		else 
 			{
 				return "Username already exists..";
+
 			}
 	}
 function checkuser($userlogin)
@@ -311,9 +298,9 @@ function getprojects($bcid,$onlyactive = true)
 	{
                 if ($onlyactive)
                 {
-                    $projres = mysql_query("SELECT * from projects where active = 1 and bcid = '$bcid' order by active DESC ;");
+                    $projres = mysql_query("SELECT * from projects where active = 1 and bcid = '$bcid' order by projectname ASC ;"); /* MODIFIED BY Vincent Castro */
                 }
-		else $projres = mysql_query("SELECT * from projects where bcid = '$bcid' order by active DESC ;");
+		else $projres = mysql_query("SELECT * from projects where bcid = '$bcid' order by projectname ASC ;"); /* MODIFIED BY Vincent Castro */
 		$pp = 0;
 		while ($projrow = mysql_fetch_array($projres))
 			{
@@ -326,6 +313,7 @@ function getprojects($bcid,$onlyactive = true)
 			$plist_query .= "'".$projrow['projectid']."'";
 			$pp++;
 			}
+			
 		$projectlist['list'] = $plist;
 		$projectlist['pp'] = $pp;
 		$projectlist['data'] = $projects;
@@ -472,6 +460,7 @@ function featurecheckexp($bcid,$feature)
 			}
 		elseif ($r['expdate'] > time())
 			{
+				
 				return true;
 			}
 		else {
@@ -497,6 +486,7 @@ function getdm($bcid)
 							}
 					}
 			}
+			
 		return $ret;
 	}
 function featurecheck($bcid,$feature)
@@ -554,6 +544,7 @@ function savetable($table,$arr)
 				$updatedrows = 0;
 				if ($r['changed'] == 1)
 					{
+						
 						$ct = 0;
 						$q = "Update $table set ";
 						foreach($fields as $field)
@@ -570,16 +561,6 @@ function savetable($table,$arr)
 						$updatedrows++;
 					}
 			}
-	}
-function getdatatablesorted($table, $id = 'id', $sortkey = 'company')
-	{
-		$r = mysql_query("SELECT * from $table ORDER BY $sortkey");
-		$m = array();
-		while ($row = mysql_fetch_array($r))
-			{
-				$m[$row[$id]] = $row;
-			}
-		return $m;
 	}
 function getdatatable($table, $id = 'id')
 	{
@@ -613,6 +594,7 @@ function buypackage($packageid)
 				$t .= 'Cost: '.$row['packagecost'].' x Qty: <input type="text" id="packnum" value="1" onchange="computetcc(\''.$row['packagecost'].'\')"> = <span id="totalcreditcost">'.$row['packagecost'].'</span>';
 				$t .= '<br><a href="#" onclick="dopurchase(\''.$packageid.'\')">Confirm</a> <br><br></td>';
 				if ($ct % 2 == 0 && $ct != 0) $t .= '</tr>';
+				
 				$ct++;
 		$t .= '</table><br>';
 		return $t;
@@ -635,8 +617,10 @@ function getpackages($type)
 		$t .= '</table><br>';
 		return $t;
 	}
+	
 function bcfeatures($bcid)
 	{
+		
 	}
 function getbclist($status = NULL)
 	{
@@ -714,6 +698,7 @@ function getbcusage($bcid, $st, $en)
 				$ulist .= "'".$urow['userid']."'";
 				$uct++;
 			}
+			
 		//get actionlog of users on dates
 		$usage = array();
 		$totalduration = 0;
@@ -734,8 +719,10 @@ function getbcusage($bcid, $st, $en)
 						$tlogd = $hang[$row['userid']];
 						if ($row['date'] != $ac[$tlogd]['date'])
 							{
+								
 								$ndure = getlastdura($ac[$tlogd]['date'],$ac[$tlogd]['userid'],$ac[$tlogd]['login']);
 								$detailed[$tlogd]['logout'] = $ac[$tlogd]['login'] + $ndure;
+							
 							}
 						else {
 						$detailed[$tlogd]['logout'] = $row['login'];	
@@ -746,6 +733,8 @@ function getbcusage($bcid, $st, $en)
 						$ddate = $ac[$tlogd]['date'];
 						$dayduration[$ddate]['duration'] = $dayduration[$ddate]['duration'] + $ndure;
 						$dayduration[$ddate]['date'] = $ddate;
+						
+
 					}
 				if ($row['login'] < $row['logout'])
 				{
@@ -753,7 +742,9 @@ function getbcusage($bcid, $st, $en)
 					$totalduration = $totalduration + $dur;
 					$duration[$row['userid']] = $duration[$row['userid']] + $dur;
 					$dayduration[$row['date']]['duration'] = $dayduration[$row['date']]['duration'] + $dur;
+				
 					$dayduration[$row['date']]['date'] = $row['date'];
+					
 				}
 				else {
 					$dur = 0;
@@ -761,6 +752,8 @@ function getbcusage($bcid, $st, $en)
 					$hanguser[$row['userid']] = 1;
 				}
 				$detailed[$row['tlogid']] = $row;
+				
+				
 			}
 		$huids = array_keys($hanguser);
 		foreach ($huids as $hids)
@@ -787,6 +780,7 @@ function getbcusage($bcid, $st, $en)
 		$results['usageusers'] = $duration;
 		$results['usagedays'] = $dayduration;
 		return $results;
+		
 	}
 function getmobilecost($bcid, $dura)
 	{
@@ -797,6 +791,7 @@ function getmobilecost($bcid, $dura)
 		$cost = $minutes * $rpm;
 		$cost = number_format($cost,2);
 		return $cost;
+		
 	}
 function getusagecost($bcid, $dura)
 	{
@@ -835,6 +830,7 @@ function getbcdetails($bcid)
 		$row = mysql_fetch_array($res);
 		return $row;
 	}
+
 function dayadd($date)
 	{
 		$d = strtotime($date);
@@ -864,6 +860,7 @@ function graph3d_single($xarr,$yarr,$file,$xtitle, $ytitle, $maintitle,$showname
 		$serv = substr($_SERVER['HTTP_HOST'],6,3);
 		$file = $serv.$file;
 		$xml = fopen($file,"w");
+		
 		$data = '<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 		<graph caption="'.$maintitle.'" xAxisName="'.$xtitle.'" yAxisName="'.$ytitle.'"  shownames="'.$shownames.'" decimalPrecision="0" formatNumberScale="0">';
 		$c = 0;
@@ -962,7 +959,9 @@ function getchildpages($parentid,$spacer = NULL)
 						}
 					else $ret .= '<li>'.$spacer.'<a href="#" onclick="editscriptid(\''.$child['scriptid'].'\')">'.$child['scriptname'].'</a></li>';
 					$ret .= getchildpages($child['scriptid'],$spacer);
+				
 				}
+	
 			return $ret;
 		}
 	}
@@ -989,6 +988,7 @@ function getdispofromsystem($systemdisposition)
             {
                 $ret = 'No Answer';
             }
+            
             elseif ($systemdisposition == 'CHANUNAVAIL' || $systemdisposition == 'CONGESTION')
             {
                 $ret = 'CallFailed';
@@ -1004,26 +1004,34 @@ function creds($num)
     return number_format($num,2,".","");
 }
 function sanitize_output($buffer) {
+
     $search = array(
         '/\>[^\S ]+/s',  // strip whitespaces after tags, except space
         '/[^\S ]+\</s',  // strip whitespaces before tags, except space
         '/(\s)+/s'       // shorten multiple whitespace sequences
     );
+
     $replace = array(
         '>',
         '<',
         '\\1'
     );
+
     $buffer = preg_replace($search, $replace, $buffer);
+
     return $buffer;
 }
 function filesizeformat($size) {
+ 
     // Adapted from: http://www.php.net/manual/en/function.filesize.php
+ 
     $mod = 1024;
+ 
     $units = explode(' ','B KB MB GB TB PB');
     for ($i = 0; $size > $mod; $i++) {
         $size /= $mod;
     }
+ 
     return round($size, 2) . ' ' . $units[$i];
 }
 ?>
