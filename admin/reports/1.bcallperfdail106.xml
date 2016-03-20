@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-		<graph caption="Graph for Agent Five" xAxisName="" yAxisName=""  shownames="0" decimalPrecision="0" formatNumberScale="0"><set name="No Disposition" value="2" color="cfe948" /><set name="No Answer" value="2" color="452b7d" /><set name="AnsweringMachine" value="1" color="23d21e" /><set name="CallFailed" value="1" color="bc11c7" /><set name="Disconnected" value="1" color="483b6d" /><set name="NotAvailable" value="1" color="83a65f" /></graph>

@@ -1,71 +1,69 @@
-* {
-	margin:0;
-	padding:0;
-	font-family:Tahoma, Geneva, sans-serif;
-	font-size:10pt;
-}
-
-.ui-widget {
-	font-size:10pt;
-}
-#container {
-	width: 100%;
-	margin: 0 auto;
-	position:relative;
-	top:25px;
-}
-#header {
-	height:50px;
-        margin-bottom: 5px;
-}
-#reporttitle {
-	position:absolute;
-	top:30px;
-	color:#16A6BD;
-	right:10px;
-	font-size:20px;
-}
-.tableheader {
-	background-color:#333;
-	font-weight:300 !important;
-	font-size:10pt;
-	color:#0CC;
-	padding:2px;
-	cursor:pointer;
-}
-.tableitem {
-	background-color:#FFF;
-	font-size:1em;
-}
-.tableitem_ {
-	background-color:#F0F0F0;
-	font-size:1em;
-}
-#searchresults .tableitem_:hover {
-	background-color:#FF9;
-}
-#searchresults .tableitem:hover {
-	background-color:#FF9;
-
-}
-#cview {
-    display:none;
-    width:100%;
-    height:150px;
-}
-.vftab {
-    float:left;
-    width:30%;
-}
-.vftab .ck {
-    text-align:center;
-}
-.clear {
-    clear:both
-}
-td a img:hover {
-    border: 1px #0CC solid;
-}
-#searchresults .tableitem_,#searchresults .tableitem  {
-    cursor:pointer;
+* {
+	margin:0;
+	padding:0;
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:10pt;
+}
+.ui-widget {
+	font-size:10pt;
+}
+#container {
+	width: 100%;
+	margin: 0 auto;
+	position:relative;
+	top:25px;
+}
+#header {
+	height:50px;
+        margin-bottom: 5px;
+}
+#reporttitle {
+	position:absolute;
+	top:30px;
+	color:#16A6BD;
+	right:10px;
+	font-size:20px;
+}
+.tableheader {
+	background-color:#333;
+	font-weight:300 !important;
+	font-size:10pt;
+	color:#0CC;
+	padding:2px;
+	cursor:pointer;
+}
+.tableitem {
+	background-color:#FFF;
+	font-size:1em;
+}
+.tableitem_ {
+	background-color:#F0F0F0;
+	font-size:1em;
+}
+#searchresults .tableitem_:hover {
+	background-color:#FF9;
+}
+#searchresults .tableitem:hover {
+	background-color:#FF9;
+}
+#cview {
+    display:none;
+    width:100%;
+    height:150px;
+}
+.vftab {
+    float:left;
+    width:30%;
+}
+.vftab .ck {
+    text-align:center;
+}
+.clear {
+    clear:both
+}
+td a img:hover {
+    border: 1px #0CC solid;
+}
+#searchresults .tableitem_,#searchresults .tableitem  {
+    cursor:pointer;
 }
